@@ -13,10 +13,6 @@ const site = content.sites[0];
 export default function Mentions() {
   return (
     <div key={site.id} className="container">
-      <Head>
-        <title>{`Mentions Légales - ${site.shopName}`}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       
       <main>
         <Header shopName={site.shopName} keywordPlurial={site.keywordPlurial} />

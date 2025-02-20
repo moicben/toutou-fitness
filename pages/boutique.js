@@ -8,9 +8,6 @@ import Products from '../components/Products'; // Importer le composant Products
 import About from '../components/About';
 import Testimonials from '../components/Testimonials';
 
-import content from '../content.json';
-import productsData from '../products.json';
-
 const Boutique = ({ site, products }) => {
   const [cartCount, setCartCount] = useState(0);
 
@@ -21,14 +18,10 @@ const Boutique = ({ site, products }) => {
 
   return (
     <div key={site.id} className="container">
-      <Head>
-        <title>{"Boutique spécialisée : " + site.keywordPlurial + " - " +  site.shopName}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       
       <main>
         <Header shopName={site.shopName} cartCount={cartCount} keywordPlurial={site.keywordPlurial} />
-        <Products title={`${site.keywordPlurial} - Tous les produits`} products={products} description={site.productsDescription} />
+        <Products title={`${site.keywordPlurial} Tous les équipements`} products={products} description={site.productsDescription} />
         <About site={site} />
         <Testimonials site={site} />
       </main>

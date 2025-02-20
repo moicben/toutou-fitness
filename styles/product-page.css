@@ -3,7 +3,7 @@
 /*PRODUCT PAGE*/
 
 .product-hero .wrapper,
-.product-description .wrapper {
+.product-details .wrapper {
   width: 100%;
   padding: 4rem;
 }
@@ -32,11 +32,14 @@ section.product-hero {
   height: 500px;
   max-height: 500px;
   object-fit: contain;
-  transition: transform 0.5s ease; /* Ajout de la transition pour le zoom */
+  transition: transform 0.5s ease, transform-origin 0.5s ease;
+  /* Ajout de la transition pour le zoom et l'origine de la transformation */
 }
 
-.large-image:hover{
+.large-image:hover {
   transform: scale(1.5);
+  transform-origin: var(--mouse-x) var(--mouse-y);
+  /* Utilisation des variables CSS pour l'origine de la transformation */
 }
 
 .thumbnail-container {
@@ -113,11 +116,22 @@ section.product-hero {
   padding-bottom: 2rem;
 }
 
+.product-description{
+  margin-bottom: 2rem;
+}
+
 .product-info button {
   font-size: 1rem;
   padding: 1rem 2rem;
   border-radius: 8px;
   width: 100%;
+  background-color: #000;
+  transition: .5s;
+}
+
+.product-info button:hover {
+  background-color: #333;
+  color: white;
 }
 
 .product-info .product-content {
@@ -184,7 +198,7 @@ section.product-hero {
 .product-features i{
   width: 20px;
   margin-right: .75rem;
-  color: #023875;
+  color: #333;
 }
 
 .product-features img{
@@ -203,6 +217,7 @@ section.product-hero {
   overflow: hidden;
   background-size: 120%;
   margin:2rem 0 0rem 0;
+  display: none;
 }
 
 .gift-container .cover{
@@ -264,8 +279,8 @@ section.product-hero {
   right: -2rem;
 }
 
-.product-description {
-  background-color: #f9f9f9;
+.product-details {
+  background-color: #FAEFE6;
   border-radius: 8px;
   width: 100%;
 }
@@ -276,7 +291,9 @@ section.product-hero {
 }
 
 .product-content ul,
-.product-content ol {
+.product-content ol,
+.product-description ul,
+.product-description ol {
   display: block;
   margin-left: 1.25rem;
   list-style-type:square
@@ -286,7 +303,8 @@ section.product-hero {
   margin-top: 1.5rem;
 }
 
-.product-content li {
+.product-content li,
+.product-description li {
   display: list-item;
   justify-content: space-between;
   padding: .25rem;
@@ -334,7 +352,7 @@ section.product-hero {
 /* Mobile Styles */
 @media (max-width: 1024px) {
   .product-hero .wrapper,
-  .product-description .wrapper {
+  .product-details .wrapper {
   padding: 00rem;
   }
 
@@ -424,7 +442,7 @@ section.product-hero {
     font-size: .8rem;
   }
 
-  .product-description {
+  .product-details {
   padding: .5rem 2rem 2rem 2rem;
   }
 

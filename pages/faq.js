@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -27,11 +26,6 @@ const Faq = ({ site }) => {
 
     return (
         <div key={site.id} className="container">
-            <Head>
-                <title>{`Questions fréquentes - ${site.shopName}`}</title>
-                <meta name="description" content="Frequently Asked Questions" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             
             <Header shopName={site.shopName} keywordPlurial={site.keywordPlurial} />
             

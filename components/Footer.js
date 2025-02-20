@@ -63,8 +63,8 @@ const Footer = ({ shopName, footerText }) => {
               <ul>
                 <li><a href="/politique-des-retours">Politique des retours</a></li>
                 <li><a href="/suivre-mon-colis">Suivre mon colis</a></li>
-                <li><a href="/partenaires">Partenaires</a></li>
-                <li><a target='_blank' href="/sitemap.xml">Sitemap</a></li>
+                <li><a target="_blank" href="https://www.modesdemploi.fr/velos-d-appartement/christopeit">Modes d'emploi</a></li>
+                <li><a target='_blank' href="/sitemap.xml">Plan du site</a></li>
               </ul>
             </div>
             <div className="footer-column">
@@ -78,7 +78,7 @@ const Footer = ({ shopName, footerText }) => {
                     type="email" 
                     id="email" 
                     name="email" 
-                    placeholder="Votre email" 
+                    placeholder="Adresse email" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required 
@@ -89,7 +89,7 @@ const Footer = ({ shopName, footerText }) => {
             </div>
           </article>
           <div className="sub-footer">
-            <p>© 2024 - Tous droits réservés - {shopName}</p>
+            <p>© 2025 - Tous droits réservés - {shopName}</p>
             <div className={styles.paymentIcons}>
               <img src="/card-logo.png" alt={"acheter" + shopName} />
             </div>

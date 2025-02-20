@@ -74,10 +74,10 @@ const Header = ({ shopName, keywordPlurial }) => {
   return (
     <>
       <section className="sub">
-        Commencez 2025 en beauté : -15% sur tous nos produits avec le code : "<span style={{ fontWeight: 600 }}>YEAR15</span>" !
+        Solde de Février : -15% sur tous nos produits avec le code : "<span style={{ fontWeight: 600 }}>FEVRIER15</span>" !
       </section>
       <header className="header">
-          <a className="logo-header" href="/"><img src='/favicon-french.png' alt="Logo"/><h2>{shopName}</h2></a>
+          <a className="logo-header" href="/"><img src='/logo.svg' alt="Logo"/></a>
           <nav className="nav">
             <ul>
               <li><a href="/">Accueil</a></li>

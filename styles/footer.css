@@ -36,7 +36,9 @@
 .feature-item p{
     font-size: 1rem;
     margin-right: 2rem;
-    font-weight: 500;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: black;
 }
 
 
@@ -44,7 +46,7 @@
 
 
 footer {
-    background-color: #000c1a;
+    background-color: #1b0004;
     width: 100%;
  }
 
@@ -108,8 +110,12 @@ footer article{
   .footer-column ul li a {
     text-decoration: none;
     color: #AAA;
-    font-size: 1rem;
+    font-size: .9rem;
   }
+
+    .footer-column ul li a:hover {
+        color: #fff;
+    }
   
   .footer-column form {
     display: flex;
@@ -133,7 +139,6 @@ footer article{
   .footer-column form button {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
-    background-color: #0070f3;
     color: white;
     border: none;
     border-radius: 5px;
@@ -154,11 +159,11 @@ footer article{
 
 .legal-container *{
   font-size: .75rem;
-    color: #555768;
+    color: #685555;
 }
 
 .legal-container *:hover{
-  color: #787989;
+  color: #897878;
 }
 
 
@@ -178,7 +183,7 @@ footer article{
 
   .sub-footer *{
     font-size: .9rem;
-    color: #555768;
+    color: #685555;
     margin: 0;
   }
   

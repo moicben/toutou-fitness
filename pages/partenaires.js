@@ -15,10 +15,6 @@ const Partenaires = () => {
 
     return (
         <div key={site.id} className="container">
-            <Head>
-                <title>{`Nos Partenaires - ${site.shopName}`}</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             
             <main>
                 <Header shopName={site.shopName} keywordPlurial={site.keywordPlurial} />
@@ -28,7 +24,7 @@ const Partenaires = () => {
                     <ul>
                         {partners.map((partenaire, index) => (
                             <li key={index}>
-                                <a href={partenaire.url} target="_blank" rel="noopener noreferrer">
+                                <a href='#' target="_blank" rel="noopener noreferrer">
                                     <h3>{partenaire.name}</h3>
                                 </a>
                             </li>

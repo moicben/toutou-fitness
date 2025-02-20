@@ -14,6 +14,8 @@ export default function ProductDetail({ product, site, products }) {
   const [visibleImageIndex, setVisibleImageIndex] = useState(0);
   const [buttonText, setButtonText] = useState('Ajouter au panier');
   const sliderRef = useRef(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -54,7 +56,7 @@ export default function ProductDetail({ product, site, products }) {
   };
 
   const handleNextImages = () => {
-    if (visibleImageIndex + 4 < images.length) {
+    if (visibleImageIndex + 1 < images.length) {
       setVisibleImageIndex(visibleImageIndex + 1);
       setSelectedImageIndex(visibleImageIndex + 1); // Update the large image
     } else {
@@ -63,18 +65,29 @@ export default function ProductDetail({ product, site, products }) {
     }
   };
 
+   const handleMouseMove = (e) => {
+    const { left, top, width, height } = e.target.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setMousePosition({ x, y });
+  };
+
+  useEffect(() => {
+    const largeImage = document.querySelector('.large-image');
+    if (largeImage) {
+      largeImage.style.setProperty('--mouse-x', `${mousePosition.x}%`);
+      largeImage.style.setProperty('--mouse-y', `${mousePosition.y}%`);
+    }
+  }, [mousePosition]);
+
   const images = product.productImages || [];
   const visibleImages = images.slice(visibleImageIndex, visibleImageIndex + 4);
 
   return (
     <div className="container">
       <Head>
-        <title>{product.productTitle} - {site.shopName}</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        />
+        <title>{`${product.productTitle} - ${site.shopName}`}</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       
       <main>
@@ -84,7 +97,12 @@ export default function ProductDetail({ product, site, products }) {
         <div className="product-columns">
           <div className="product-image">
             {images[selectedImageIndex] && (
-              <img src={images[selectedImageIndex]} alt={product.productTitle} className="large-image" />
+              <img
+                src={images[selectedImageIndex]}
+                alt={product.productTitle}
+                className="large-image"
+                onMouseMove={handleMouseMove}
+              />
             )}
             <div className="thumbnail-container">
               {visibleImages.map((image, index) => (
@@ -108,6 +126,8 @@ export default function ProductDetail({ product, site, products }) {
           <div className="product-info">
             <h1>{product.productTitle}</h1>
             <p className="product-price">{product.productPrice}</p>
+            <div className="product-description" dangerouslySetInnerHTML={{ __html: product.productDescription }} />
+
             <article className="purchase-row">
               <div className="quantity-selector">
                 <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>-</button>
@@ -141,9 +161,9 @@ export default function ProductDetail({ product, site, products }) {
 
         <Reviews product={product} />
   
-        <section className="product-description">
+        <section className="product-details">
           <div className="wrapper">
-            <div className="product-content" dangerouslySetInnerHTML={{ __html: product.productDescription }} />
+            <div className="product-content" dangerouslySetInnerHTML={{ __html: product.productDetails }} />
           </div>
         </section>
   

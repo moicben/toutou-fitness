@@ -13,11 +13,7 @@ const site = content.sites[0];
 export default function ConditionsGenerales() {
   return (
     <div key={site.id} className="container">
-      <Head>
-        <title>{`Conditions Générales - ${site.shopName}`}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      
+
       <main>
         <Header shopName={site.shopName} keywordPlurial={site.keywordPlurial} />
         
