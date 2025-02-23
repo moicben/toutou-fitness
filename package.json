@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node main.js",
     "export": "next build && next export"
   },
   "dependencies": {
