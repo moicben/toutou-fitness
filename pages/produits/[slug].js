@@ -7,6 +7,22 @@ import Products from '../../components/Products';
 import productsData from '../../products.json';
 import Reviews from '../../components/Reviews';
 
+// Event snippet for Clic "Ajouter au panier" conversion page
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-16883090550/jdTDCK687qEaEPaIvvI-',
+      'value': 1.0,
+      'currency': 'EUR',
+      'event_callback': callback
+  });
+  return false;
+}
+
 export default function ProductDetail({ product, site, products }) {
   const [cartCount, setCartCount] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -15,7 +31,6 @@ export default function ProductDetail({ product, site, products }) {
   const [buttonText, setButtonText] = useState('Ajouter au panier');
   const sliderRef = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -49,6 +64,9 @@ export default function ProductDetail({ product, site, products }) {
     setTimeout(() => setButtonText('Ajouter au panier'), 3000);
     // Ouvrir le drawer du panier
     document.querySelector('.cart-container').click();
+
+    // Call the conversion tracking function
+    gtag_report_conversion();
   };
 
   const handleImageClick = (index) => {
