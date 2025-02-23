@@ -18,8 +18,13 @@ async function translateText(text) {
     const response = await openai.chat.completions.create({
         model: 'gpt-3.5-turbo',
         messages: [
-            { role: 'system', content: 'Tu es un outil de traduction allemand vers français, je te donne du texte en allemand, et tu me réponds avec sa traduction française singulière. Ne supprimer pas les balises HTML dans le contenu si il y en a.' },
-            { role: 'user', content: text }
+            { role: 'system', content: 'Tu es un outil de traduction allemand vers français, je te donne du texte en allemand, et tu me réponds avec sa traduction française singulière. ' },
+            { role: 'user', content: `Voici le texte à traduire : ${text} \n
+            Traduis le texte en français singulier. \n 
+            Ne supprimer pas les balises HTML dans le contenu si il y en a. \n
+            Réponds uniquement avec le texte traduit rien d'aautre. \n
+            Voici le texte traduit : \n
+            ` }
         ],
         max_tokens: 2000
     });
@@ -60,7 +65,7 @@ async function writeSlug(title) {
 async function main() {
   try {
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: 'new',
         defaultViewport: { width: 1920, height: 1080 },
         args: [
             '--no-sandbox',
@@ -79,7 +84,7 @@ async function main() {
     await page.goto(url, { waitUntil: 'networkidle0'});
 
     // Delay
-    await delay(5000);
+    await delay(2000);
 
     const productElements = await page.$$('.row.cms-listing-row.js-listing-wrapper a.card-body');
     const productList = [];
@@ -87,7 +92,7 @@ async function main() {
 
     let count = 0;
     for (const element of productElements) {
-      if (count >= 1) break;
+      //if (count >= 3) break;
 
       const productPriceElement = await element.$('.product-price-info');
       const productImageElement = await element.$('img');
