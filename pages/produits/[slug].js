@@ -23,7 +23,7 @@ function gtag_report_conversion(url) {
   return false;
 }
 
-export default function ProductDetail({ product, site, products }) {
+export default function ProductDetail({ product, site, products, relatedProducts }) {
   const [cartCount, setCartCount] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -184,7 +184,7 @@ export default function ProductDetail({ product, site, products }) {
           </div>
         </section>
   
-        <Products title={`Vous pourriez également aimer :`} products={products} />
+        <Products title={`Vous pourriez également aimer :`} products={relatedProducts} />
       </main>
       <Footer shopName={site.shopName} footerText={site.footerText} />
     </div>
@@ -203,12 +203,14 @@ export async function getStaticProps({ params }) {
   const product = productsData.products.find(p => p.slug === params.slug);
   const site = content.sites[0];
   const products = productsData.products.filter(p => p.siteId === site.id);
+  const relatedProducts = productsData.products.filter(p => p.productCategory === product.productCategory && p.slug !== product.slug);
 
   return {
     props: {  
       product: product || null,
       site: site || null,
       products,
+      relatedProducts,
     },
   };
 }

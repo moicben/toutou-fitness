@@ -10,13 +10,14 @@ import '../styles/reviews.css'; // Importer le fichier CSS
 import '../styles/partners.css'; // Importer le fichier CSS
 import '../styles/paiement.css';
 
+import content from '../content.json';
 import Head from '../components/Head';
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head 
-        title="Christopeit France" 
+        title={content.sites[0].keyword}
         description="Boutique officielle de Christopeit France, distributeur exclusif de la marque Christopeit en France." 
         favicon="/favicon.png" 
       />
