@@ -9,4 +9,4 @@ param (
 scp -i $privateKeyPath $localFilePath root@${dropletIp}:${remoteFilePath}
 
 # Connectez-vous au droplet et exécutez le script
-ssh -i $privateKeyPath root@${dropletIp} "node ${remoteFilePath}"
+#ssh -i $privateKeyPath root@${dropletIp} "node ${remoteFilePath}"
