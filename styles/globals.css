@@ -191,13 +191,15 @@ td {
 }
 
 
+.about {
+  background: #faefe6;
+}
 
 .about .wrapper{
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 4rem;
-  background: #faefe6;
 }
 
 
