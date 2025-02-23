@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-const myHead = ({ title, description, favicon }) => {
+const MyHead = ({ title, description, favicon }) => {
   return (
     <Head>
       <title>{title}</title>
@@ -11,14 +11,16 @@ const myHead = ({ title, description, favicon }) => {
   
       <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16883090550"></script>
       <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-        gtag('config', 'AW-16883090550');
+          gtag('config', 'AW-16883090550');
+        `}
       </script>
     </Head>
   );
 };
 
-export default myHead;
+export default MyHead;

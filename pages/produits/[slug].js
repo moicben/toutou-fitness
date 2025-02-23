@@ -87,7 +87,6 @@ export default function ProductDetail({ product, site, products }) {
     <div className="container">
       <Head>
         <title>{`${product.productTitle} - ${site.shopName}`}</title>
-        <link rel="icon" href="/favicon.png" />
       </Head>
       
       <main>
