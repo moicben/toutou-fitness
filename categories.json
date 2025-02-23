@@ -1,0 +1,22 @@
+{
+  "categories": [
+    {
+      "name": "Rameurs Intérieur",
+      "seoTitle": "Rameurs Intérieur - Tous les équipements",
+      "seoDescription": "Découvrez notre sélection de rameurs d'intérieur pour tous vos besoins en fitness.",
+      "slug": "rameurs-interieur"
+    },
+    {
+      "name": "Vélos d'Appartement",
+      "seoTitle": "Vélos d'Appartement - Tous les équipements",
+      "seoDescription": "Explorez notre gamme de vélos d'appartement pour un entraînement efficace à domicile.",
+      "slug": "velos-appartement"
+    },
+    {
+      "name": "Tapis de Course",
+      "seoTitle": "Tapis de Course - Tous les équipements",
+      "seoDescription": "Trouvez le tapis de course parfait pour vos séances de cardio à la maison.",
+      "slug": "tapis-de-course"
+    }
+  ]
+}
