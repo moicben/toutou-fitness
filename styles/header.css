@@ -60,11 +60,31 @@
   
   .header nav a {
     text-decoration: none;
-    font-size: 1rem;
-    color: black;
-    margin: 0px 10px;
-    padding: 0px 10px;
+    font-size: .9rem;
+    color: #1c1c1c;
+    margin: 0px .75rem;
+    padding: 0px .5rem;
     font-weight: 400;
+    display: inline-block;
+    position: relative;
+  }
+
+  .nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: currentColor;
+    transition: width 0.4s ease, right 0.4s ease;
+  }
+
+  .nav ul li a:hover::after {
+    width: 100%;
+    right: 0;
+    color: #000;
   }
   
   .header .cart-icon {
