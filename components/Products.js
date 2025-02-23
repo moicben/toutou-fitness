@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 const Products = ({ title, products, description }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 12;
+  const productsPerPage = 16;
+  const productListRef = useRef(null);
 
   // Calculer les produits à afficher sur la page actuelle
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -15,6 +16,10 @@ const Products = ({ title, products, description }) => {
   // Gérer le changement de page
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo({
+      top: productListRef.current.offsetTop - 100,
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -22,7 +27,7 @@ const Products = ({ title, products, description }) => {
       <div className='wrapper'>
         <h2>{title}</h2>
         <h4>{description}</h4>
-        <div className="product-list">
+        <div className="product-list" ref={productListRef}>
           {currentProducts.map(product => (
             <a href={`/produits/${product.slug}`} key={product.id} className="product-item">
               <img src={product.productImages[0]} alt={product.productTitle} />
@@ -31,7 +36,7 @@ const Products = ({ title, products, description }) => {
             </a>
           ))}
         </div>
-        {products.length > 12 && (
+        {products.length > productsPerPage && (
           <div className="pagination">
             <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
               Précédent

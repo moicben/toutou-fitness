@@ -80,10 +80,10 @@ const Header = ({ shopName, keywordPlurial }) => {
           <a className="logo-header" href="/"><img src='/logo.svg' alt="Logo"/></a>
           <nav className="nav">
             <ul>
-              <li><a href="/">Accueil</a></li>
-              <li><a href="/boutique">Boutique</a></li>
-              <li><a href="/#a-propos">A propos</a></li>
-              <li><a href="/#contact">Contact</a></li>
+              <li><a href="/boutique">TOUS LES équipements</a></li>
+              <li><a href="/velos-appartement">Vélos d'appartement</a></li>
+              <li><a href="/tapis-de-course">Tapis de course</a></li>
+              <li><a href="/rameurs-interieur">Rameurs d'intérieur</a></li>
             </ul>
           </nav>
           <div className="cart-container" onClick={toggleCart}>
