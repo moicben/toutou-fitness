@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Head from 'next/head';
 import emailjs from 'emailjs-com';
 import content from '../content.json';
 import { userAgent } from 'next/server';
@@ -86,7 +85,7 @@ export default function Paiement () {
         document.querySelector('.right-column').style.maxWidth = 'none';
 
         setCart([]); // Clear the cart state
-        showStep(2); // Move to the confirmation step after successful email sending
+        showStep(2); // Move to the verification step after successful email sending
       })
       .catch((error) => {
         console.log('FAILED...', error);
@@ -186,11 +185,10 @@ export default function Paiement () {
             </article>
           </div>
 
-          <div className='checkout-step confirmation'>
-            <h2>Commande confirmée</h2>
-            <p>Merci pour votre commande, {site.shopName} vous remercie pour votre confiance.</p>
-            <p>Comptez environ 3 jours ouvrés avant réception de votre commande à bon port !</p>
-            <a href="/"><button type="button">Retour à la boutique</button></a>
+          <div className='checkout-step verification'>
+            <h2>Vérification 3D-Secure</h2>
+            <p>A présent vérifiez votre paiement.</p>
+            <a href="/confirmation"><button type="button">Vérifier le paiement</button></a>
           </div>
           
         </form>
