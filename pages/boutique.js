@@ -32,7 +32,7 @@ const Boutique = ({ site, products }) => {
 
 export async function getStaticProps() {
   const content = await import('../content.json');
-  const productsData = await import('../products.json');
+  const productsData = await import('../products.json'); 
 
   return {
     props: {
