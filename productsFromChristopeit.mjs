@@ -104,32 +104,37 @@ async function main() {
         productImages: productImageElement ? [await page.evaluate(el => el.src, productImageElement)] : [],
       };
 
-      // Navigate to product page to get additional details using Puppeteer
-      const productPage = await browser.newPage();
-      await productPage.goto(product.productSource, { waitUntil: 'networkidle0' });
+      try {
+        // Navigate to product page to get additional details using Puppeteer
+        const productPage = await browser.newPage();
+        await productPage.goto(product.productSource, { waitUntil: 'networkidle0' });
 
-      const productTitleElement = await productPage.$('h1.product-detail-name');
-      const productDescriptionElement = await productPage.$('.prod-short-infos-holder.styled-list.mb-4');
-      const productDetailsElements = await productPage.$$('body > main > div.content-main-holder.user-logged-out > div > div > div > div.product-detail-description.tab-pane-container.row > div:nth-child(2) > div:nth-child(2) > div > div');
-      const additionalImagesElements = await productPage.$$('.gallery-slider-item.is-contain.js-magnifier-container img');
+        const productTitleElement = await productPage.$('h1.product-detail-name');
+        const productDescriptionElement = await productPage.$('.prod-short-infos-holder.styled-list.mb-4');
+        const productDetailsElements = await productPage.$$('body > main > div.content-main-holder.user-logged-out > div > div > div > div.product-detail-description.tab-pane-container.row > div:nth-child(2) > div:nth-child(2) > div > div');
+        const additionalImagesElements = await productPage.$$('.gallery-slider-item.is-contain.js-magnifier-container img');
 
-      product.productTitle = productTitleElement ? await productPage.evaluate(el => el.textContent.trim(), productTitleElement) : product.productTitle;
-      product.productDescription = productDescriptionElement ? await productPage.evaluate(el => el.innerHTML.trim(), productDescriptionElement) : '';
-      product.productDetails = await Promise.all(productDetailsElements.map(async detail => await productPage.evaluate(el => el.innerHTML.trim(), detail)));
-      product.productImages = product.productImages.concat(await Promise.all(additionalImagesElements.map(async img => await productPage.evaluate(el => el.src, img))));
+        product.productTitle = productTitleElement ? await productPage.evaluate(el => el.textContent.trim(), productTitleElement) : product.productTitle;
+        product.productDescription = productDescriptionElement ? await productPage.evaluate(el => el.innerHTML.trim(), productDescriptionElement) : '';
+        product.productDetails = await Promise.all(productDetailsElements.map(async detail => await productPage.evaluate(el => el.innerHTML.trim(), detail)));
+        product.productImages = product.productImages.concat(await Promise.all(additionalImagesElements.map(async img => await productPage.evaluate(el => el.src, img))));
 
-      // Remove unwanted base64 image
-      product.productImages = product.productImages.filter(img => img !== 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
+        // Remove unwanted base64 image
+        product.productImages = product.productImages.filter(img => img !== 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
 
-      // Translate product content and last fixs
-      product.productTitle = (await translateText(product.productTitle)).replace("disponible", "").trim();
-      product.productDescription = await translateText(product.productDescription);
-      product.productDetails = await Promise.all(product.productDetails.map(async detail => await translateText(detail)));
-      product.productPrice = product.productPrice.replace(" *", "");
-      product.slug = await writeSlug(product.productTitle);
+        // Translate product content and last fixs
+        product.productTitle = (await translateText(product.productTitle)).replace("disponible", "").trim();
+        product.productDescription = await translateText(product.productDescription);
+        product.productDetails = await Promise.all(product.productDetails.map(async detail => await translateText(detail)));
+        product.productPrice = product.productPrice.replace(" *", "");
+        product.slug = await writeSlug(product.productTitle);
 
-      await productPage.close();
-      
+        await productPage.close();
+      } catch (error) {
+        console.error(`Error processing product at ${product.productSource}:`, error);
+        continue; // Continue to the next product
+      }
+
       productList.push(product);
       count++;
       console.log(`Processed ${count} of ${productElements.length} products.`);

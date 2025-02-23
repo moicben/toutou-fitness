@@ -28,7 +28,7 @@ const Boutique = ({ site, products }) => {
       <Footer shopName={site.shopName} footerText={site.footerText} />
     </div>
   );
-}
+} 
 
 export async function getStaticProps() {
   const content = await import('../content.json');
