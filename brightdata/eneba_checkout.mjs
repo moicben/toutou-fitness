@@ -5,15 +5,20 @@ async function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// ------------------------------ DYNAMIC DATA ------------------------------
+// ------------------------------ PROXY SETTINGS ----------------------------
 
-const cardHolder = 'Benedikt Strokin';
-let cardNumber = '5355852092479488';
-const cardExpiration = '02/30';
-const cardCVC = '379';
+  const proxyUrl = 'http://fr.smartproxy.com:40001';
+  const username = 'bstrokin123';
+  const password = 'E~9jBoNk8pnW5w1ahu';
 
-const payAmount = 269.99;
+// ------------------------------ PAYMENT DATA ------------------------------
 
+  const cardHolder = 'Caroline Agobert';
+  let cardNumber = '11111111';
+  const cardExpiration = '10/26';
+  const cardCVC = '111';
+
+  const payAmount = 269.99;
 
 // ------------------------------ FORMATTING DATA ------------------------------
 
@@ -44,24 +49,15 @@ function getGiftCardCombination(amount, values) {
 }
 
 (async () => {
-  const browser = await puppeteer.launch({
-    headless: 'new',
-    executablePath: '/snap/bin/chromium',
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--disable-accelerated-2d-canvas',
-      '--disable-gpu',
-      '--window-size=1440,920',
-      '--disable-dev-shm-usage',
-    ],
+  const browserWSEndpoint = 'wss://brd-customer-hl_07d8ef96-zone-main-country-fr-city-dijon:vwmm40so32x4@brd.superproxy.io:9222'
+
+  const browser = await puppeteer.connect({
+    browserWSEndpoint,
     defaultViewport: {
       width: 1440,
-      height: 920,
+      height: 920
     }
   });
-
   const page = await browser.newPage();
 
   const giftCardCombination = getGiftCardCombination(payAmount, giftCardValues);
@@ -113,6 +109,7 @@ function getGiftCardCombination(amount, values) {
   await page.keyboard.type(cardCVC);
   await delay(2000);
   console.log('Card details entered');
+  await page.screenshot({ path: 'eneba_screenshot.png' });
 
   const payButtonSelector = '#app > main > form > div > div.OBhmV_ > div.JQa1oY > button.pr0yIU';
   await page.waitForSelector(payButtonSelector);
@@ -129,9 +126,8 @@ function getGiftCardCombination(amount, values) {
   await delay(1000);
 
   await page.keyboard.press('Enter');
-  await delay(15000);
-
-  await page.screenshot({ path: 'eneba_screenshot.png' });
+  await delay(150000);
+  
 
   await browser.close();
 })();
