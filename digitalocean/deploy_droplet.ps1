@@ -1,4 +1,4 @@
-$apiToken = "dop_v1_21700258cc56beed3f7527d37d739cd068b563965b3f31c63f60c42136d8d2e2"
+$apiToken = $env:DIGITALOCEAN_API_KEY
 $region = "ams3" # Change selon ta localisation
 $size = "s-2vcpu-4gb" # Taille du Droplet
 $disk = 10 # Taille du disque en GB
