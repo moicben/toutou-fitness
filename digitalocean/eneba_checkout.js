@@ -1,5 +1,5 @@
 const express = require('express');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const cors = require('cors'); // Ajout du package cors
 const app = express();
 
@@ -69,7 +69,7 @@ app.post('/eneba_checkout', async (req, res) => {
     await delay(3000);
     await page.screenshot({path: 'eneba_cart.png'});
 
-    // Continue with the rest of your checkout process
+    // Clicking checkout
     const checkoutSelector = '#app > main > form > div.y7qjBq > div:nth-child(2) > button';
     await page.waitForSelector(checkoutSelector);
     await page.click(checkoutSelector);
@@ -77,12 +77,14 @@ app.post('/eneba_checkout', async (req, res) => {
 
     await delay(7000);
 
+    // Selecting card payment method
     const paymentSelector = 'li.VP_hF7.I0quPj button';
     await page.waitForSelector(paymentSelector);
     await page.click(paymentSelector);
 
     await delay(7000);
 
+    // Entering card details
     await page.keyboard.press('Tab');
     await page.keyboard.type(formattedCardNumber);
     await delay(500);
@@ -103,12 +105,14 @@ app.post('/eneba_checkout', async (req, res) => {
     console.log('Card details entered');
     await page.screenshot({ path: 'eneba_card.png' });
 
+    // Clicking pay button
     const payButtonSelector = '#app > main > form > div > div.OBhmV_ > div.JQa1oY > button.pr0yIU';
     await page.waitForSelector(payButtonSelector);
     await page.click(payButtonSelector);
     console.log('Payment clicked');
     await delay(5000);
 
+    // Entering email
     await page.keyboard.press('Tab');
     await delay(500);
     await page.keyboard.press('Tab');
@@ -118,10 +122,39 @@ app.post('/eneba_checkout', async (req, res) => {
     await delay(1000);
 
     await page.keyboard.press('Enter');
+
+    // ------------------------------
+
+    // Loading 3D-sucure popup
+    await delay(15000);
+    console.log('3D-secure loaded');
+    await page.screenshot({ path: 'eneba_3d.png' });
+
+    // Giving time to user to valid 3D-secure
+    await delay(40000);
+    console.log('3D-secure time passed');
+    await page.screenshot({ path: 'eneba_passed.png' });
+
+    // Whait for payment to be processed
     await delay(10000);
-    
-    console.log('End of the process');
-    await page.screenshot({ path: 'eneba_final.png' });
+    await page.screenshot({ path: 'eneba_processed.png' });
+
+    // CAPTCHA handling: If you're expecting a CAPTCHA 
+    const client = await page.createCDPSession();
+    console.log('Waiting captcha to solve...');
+    const { status } = await client.send('Captcha.waitForSolve', {
+      detectTimeout: 10000,
+    });
+    console.log('Captcha solve status:', status);
+    await page.screenshot({ path: 'eneba_captcha.png' });
+
+    // Get HTML content
+    console.log('Page content:', await page.content());
+
+
+    await delay(1000);
+
+
 
     // ------------------------------
 

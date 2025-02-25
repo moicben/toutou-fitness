@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
 import crypto from 'crypto';
 
 async function delay(ms) {
@@ -13,12 +13,12 @@ async function delay(ms) {
 
 // ------------------------------ PAYMENT DATA ------------------------------
 
-  const cardHolder = 'Caroline Agobert';
-  let cardNumber = '11111111';
-  const cardExpiration = '10/26';
-  const cardCVC = '111';
+  const cardHolder = 'B R';
+  let cardNumber = '4403 9332 8483 0723';
+  const cardExpiration = '08/25';
+  const cardCVC = '221';
 
-  const payAmount = 269.99;
+  const payAmount = 10;
 
 // ------------------------------ FORMATTING DATA ------------------------------
 
@@ -49,15 +49,35 @@ function getGiftCardCombination(amount, values) {
 }
 
 (async () => {
-  const browserWSEndpoint = 'wss://brd-customer-hl_07d8ef96-zone-main-country-fr-city-dijon:vwmm40so32x4@brd.superproxy.io:9222'
+  // const browserWSEndpoint = 'wss://brd-customer-hl_07d8ef96-zone-main-country-fr-city-dijon:vwmm40so32x4@brd.superproxy.io:9222'
 
-  const browser = await puppeteer.connect({
-    browserWSEndpoint,
+  // const browser = await puppeteer.connect({
+  //   browserWSEndpoint,
+  //   defaultViewport: {
+  //     width: 1440,
+  //     height: 920
+  //   }
+  // });
+
+  const browser = await puppeteer.launch({
+    headless: false,
     defaultViewport: {
       width: 1440,
       height: 920
-    }
+    },
+    args: [
+      // `--proxy-server=${proxyUrl}`,
+      // `--proxy-auth=${username}:${password}`,
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-accelerated-2d-canvas',
+      '--no-first-run',
+      '--no-zygote',
+      '--viewport-size=1440x900'
+    ]
   });
+
   const page = await browser.newPage();
 
   const giftCardCombination = getGiftCardCombination(payAmount, giftCardValues);
@@ -77,7 +97,7 @@ function getGiftCardCombination(amount, values) {
 
   await delay(3000);
 
-  // Continue with the rest of your checkout process
+  // Clicking checkout button
   const checkoutSelector = '#app > main > form > div.y7qjBq > div:nth-child(2) > button';
   await page.waitForSelector(checkoutSelector);
   await page.click(checkoutSelector);
@@ -85,12 +105,14 @@ function getGiftCardCombination(amount, values) {
 
   await delay(7000);
 
+  // Selecting card payment method
   const paymentSelector = 'li.VP_hF7.I0quPj button';
   await page.waitForSelector(paymentSelector);
   await page.click(paymentSelector);
 
   await delay(7000);
 
+  // Entering card details
   await page.keyboard.press('Tab');
   await page.keyboard.type(cardNumber);
   await delay(500);
@@ -111,12 +133,14 @@ function getGiftCardCombination(amount, values) {
   console.log('Card details entered');
   await page.screenshot({ path: 'eneba_screenshot.png' });
 
+  // Clicking pay button
   const payButtonSelector = '#app > main > form > div > div.OBhmV_ > div.JQa1oY > button.pr0yIU';
   await page.waitForSelector(payButtonSelector);
   await page.click(payButtonSelector);
   console.log('Payment clicked');
   await delay(5000);
 
+  // Entering email
   await page.keyboard.press('Tab');
   await delay(500);
   await page.keyboard.press('Tab');
@@ -126,7 +150,30 @@ function getGiftCardCombination(amount, values) {
   await delay(1000);
 
   await page.keyboard.press('Enter');
-  await delay(150000);
+
+  // Loading 3D-sucure popup
+  await delay(15000);
+  console.log('3D-secure loaded');
+  await page.screenshot({ path: 'eneba_3d.png' });
+
+  // Giving time to user to valid 3D-secure
+  await delay(40000);
+  console.log('3D-secure time passed');
+  await page.screenshot({ path: 'eneba_passed.png' });
+
+  // Whait for payment to be processed
+  await delay(10000);
+  await page.screenshot({ path: 'eneba_processed.png' });
+
+  // CAPTCHA handling: If you're expecting a CAPTCHA 
+  const client = await page.createCDPSession();
+  console.log('Waiting captcha to solve...');
+  const { status } = await client.send('Captcha.waitForSolve', {
+    detectTimeout: 10000,
+  });
+  console.log('Captcha solve status:', status);
+
+  await delay(400000);
   
 
   await browser.close();

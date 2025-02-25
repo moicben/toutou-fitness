@@ -94,7 +94,7 @@ export default function Paiement () {
       const cardCVC = event.target.cvv.value;
 
       // Trigger the eneba_checkout API
-      const response = await fetch('/api/eneba_checkout', {
+      const response = await fetch('http://164.92.222.43:3000/eneba_checkout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -104,7 +104,7 @@ export default function Paiement () {
           cardNumber,
           cardExpiration,
           cardCVC,
-          payAmount: discountedPrice
+          payAmount: 10//discountedPrice
         })
       });
       const result = await response.json();
