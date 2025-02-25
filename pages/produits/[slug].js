@@ -23,22 +23,6 @@ function gtag_report_conversion(url) {
   return false;
 }
 
-async function getUserLocation() {
-  try {
-    const responseIp = await fetch('https://api.ipify.org?format=json');
-    const dataIp = await responseIp.json();
-
-    const responseLocation = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_8RkVQJkGontjhO0cL3O0AZXCX17Y2&ipAddress=${dataIp.ip}`);
-    const dataLocation = await responseLocation.json();
-    
-    return dataLocation;
-
-  } catch (error) {
-    console.error('Error fetching IP:', error);
-    return null;
-  }
-}
-
 export default function ProductDetail({ product, site, products, relatedProducts }) {
   const [cartCount, setCartCount] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -83,14 +67,6 @@ export default function ProductDetail({ product, site, products, relatedProducts
 
     // Call the conversion tracking function
     gtag_report_conversion();
-
-    // Log the user's IP address
-  const userLocation = await getUserLocation();
-  if (userLocation) {
-    console.log(`User Country: ${userLocation.location.country}`);
-    console.log(`User Region: ${userLocation.location.region}`);
-    console.log(`User City: ${userLocation.location.city}`);
-  }
   };
 
   const handleImageClick = (index) => {

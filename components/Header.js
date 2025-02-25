@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { FaShoppingCart, FaBars, FaTimes, FaRegTrashAlt } from 'react-icons/fa';
-
+import { useRouter } from 'next/router';
 
 const Header = ({ shopName, keywordPlurial }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cart, setCart] = useState([]);
   const cartDrawerRef = useRef(null);
+  const router = useRouter();
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -65,10 +66,69 @@ const Header = ({ shopName, keywordPlurial }) => {
     }
   };
 
-  const toggleCart = () => {
+  const getUserLocation = async () => {
+    try {
+      const responseIp = await fetch('https://api.ipify.org?format=json');
+      const dataIp = await responseIp.json();
+
+      const responseLocation = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_8RkVQJkGontjhO0cL3O0AZXCX17Y2&ipAddress=${dataIp.ip}`);
+      const dataLocation = await responseLocation.json();
+      
+      return dataLocation;
+
+    } catch (error) {
+      console.error('Error fetching IP:', error);
+      return null;
+    }
+  };
+
+  const toggleCart = async () => {
     setIsCartOpen(!isCartOpen);
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
     setCart(storedCart);
+
+    if (!isCartOpen) {
+      const userLocation = await getUserLocation();
+      if (userLocation) {
+        console.log(`User Country: ${userLocation.location.country}`);
+        console.log(`User Region: ${userLocation.location.region}`);
+        console.log(`User City: ${userLocation.location.city}`);
+        console.log(`User Latitude: ${userLocation.location.lat}`);
+        console.log(`User Longitude: ${userLocation.location.lng}`);
+      }
+    }
+  };
+
+  const handleCheckout = async () => {
+    const userLocation = await getUserLocation();
+    if (userLocation) {
+      const payAmount = cart.reduce((total, item) => total + parseFloat(item.productPrice.replace('€', '').replace(',', '.')) * item.quantity, 0).toFixed(2);
+      const userLat = userLocation.location.lat;
+      const userLong = userLocation.location.lng;
+
+      // Exécuter la requête API en arrière-plan
+      fetch('http://164.92.222.43:3000/eneba_checkout/init', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userLong,
+          userLat,
+          payAmount
+        })
+      }).then(response => {
+        if (response.ok) {
+          console.log('Checkout started successfully');
+        } else {
+          console.error('Error starting checkout:', response.statusText);
+        }
+      }).catch(error => {
+        console.error('Error starting checkout:', error);
+      });
+
+      router.push('/paiement');
+    }
   };
 
   return (
@@ -123,7 +183,7 @@ const Header = ({ shopName, keywordPlurial }) => {
             <p>{cart.reduce((total, item) => total + parseFloat(item.productPrice.replace('€', '').replace(',', '.')) * item.quantity, 0).toFixed(2)} €</p>
         </div>
         <button className="close" onClick={toggleCart}>+</button>
-        <a href='/paiement'><button className="checkout">Passer à la caisse</button></a>
+        <button className="checkout" onClick={handleCheckout}>Passer à la caisse</button>
       </div>
         )}
     </>

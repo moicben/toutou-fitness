@@ -320,15 +320,54 @@
 
 
 
+/* Popup de vérification */
+/* Popup de vérification */
 
-.verification-container {
+.verification-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Filtre assombrissant */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.verification-popup {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
   text-align: center;
-  margin-top: 20vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: -7.5vh;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 
 
 
+
+/* Responsive */
+/* Responsive */
 
 
 @media (max-width: 1024px) {
