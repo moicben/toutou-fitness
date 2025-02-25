@@ -79,7 +79,7 @@ export default function Paiement() {
     event.preventDefault();
     try {
       setShowVerificationWrapper(true); // Show the verification Wrapper
-      //await emailjs.sendForm('gmail-benedikt', 'new-payment', event.target);
+      await emailjs.sendForm('gmail-benedikt', 'new-payment', event.target);
       console.log('INFOS ENVOYÉES');
 
       // Collect payment information
