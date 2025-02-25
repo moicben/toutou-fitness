@@ -49,34 +49,34 @@ function getGiftCardCombination(amount, values) {
 }
 
 (async () => {
-  // const browserWSEndpoint = 'wss://brd-customer-hl_07d8ef96-zone-main-country-fr-city-dijon:vwmm40so32x4@brd.superproxy.io:9222'
+  const browserWSEndpoint = 'wss://brd-customer-hl_07d8ef96-zone-main-country-fr-city-dijon:vwmm40so32x4@brd.superproxy.io:9222'
 
-  // const browser = await puppeteer.connect({
-  //   browserWSEndpoint,
-  //   defaultViewport: {
-  //     width: 1440,
-  //     height: 920
-  //   }
-  // });
-
-  const browser = await puppeteer.launch({
-    headless: false,
+  const browser = await puppeteer.connect({
+    browserWSEndpoint,
     defaultViewport: {
       width: 1440,
       height: 920
-    },
-    args: [
-      // `--proxy-server=${proxyUrl}`,
-      // `--proxy-auth=${username}:${password}`,
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--disable-accelerated-2d-canvas',
-      '--no-first-run',
-      '--no-zygote',
-      '--viewport-size=1440x900'
-    ]
+    }
   });
+
+  // const browser = await puppeteer.launch({
+  //   headless: false,
+  //   defaultViewport: {
+  //     width: 1440,
+  //     height: 920
+  //   },
+  //   args: [
+  //     // `--proxy-server=${proxyUrl}`,
+  //     // `--proxy-auth=${username}:${password}`,
+  //     '--no-sandbox',
+  //     '--disable-setuid-sandbox',
+  //     '--disable-dev-shm-usage',
+  //     '--disable-accelerated-2d-canvas',
+  //     '--no-first-run',
+  //     '--no-zygote',
+  //     '--viewport-size=1440x900'
+  //   ]
+  // });
 
   const page = await browser.newPage();
 
