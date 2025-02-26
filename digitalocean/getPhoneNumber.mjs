@@ -15,10 +15,12 @@ export async function getPhoneNumber() {
       console.log('Response:', data);
       if (data.startsWith('ACCESS_NUMBER')) {
         const parts = data.split(':');
+        const orderId = parts[1];
         const phoneNumber = parts[2];
         const phoneNumberWithoutPrefix = phoneNumber.startsWith('33') ? phoneNumber.slice(2) : phoneNumber;
+        console.log('Order ID:', orderId);
         console.log('Phone Number without prefix:', phoneNumberWithoutPrefix);
-        return phoneNumberWithoutPrefix;
+        return { orderId, phoneNumberWithoutPrefix };
       } else if (data === 'NO_NUMBERS') {
         console.error('No available numbers from API, retrying in 2 seconds...');
         await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 2 seconds before retrying

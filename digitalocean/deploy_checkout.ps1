@@ -8,6 +8,7 @@ param (
   [string]$localFilePathFinalize = "C:/Users/bendo/Desktop/Documents/Sport Maison/digitalocean/checkoutHandle.js",
   [string]$localFilePathStatus = "C:/Users/bendo/Desktop/Documents/Sport Maison/digitalocean/getPhoneStatus.mjs",
   [string]$localFilePathNumber = "C:/Users/bendo/Desktop/Documents/Sport Maison/digitalocean/getPhoneNumber.mjs",
+  [string]$localFilePathChange = "C:/Users/bendo/Desktop/Documents/Sport Maison/digitalocean/changePhoneStatus.mjs",
   [string]$remoteFilePath = "/root/"
 )
 
@@ -19,6 +20,7 @@ scp -i $privateKeyPath $localFilePathUtils root@${dropletIp}:${remoteFilePath}ut
 scp -i $privateKeyPath $localFilePathFinalize root@${dropletIp}:${remoteFilePath}checkoutHandle.js
 scp -i $privateKeyPath $localFilePathStatus root@${dropletIp}:${remoteFilePath}getPhoneStatus.mjs
 scp -i $privateKeyPath $localFilePathNumber root@${dropletIp}:${remoteFilePath}getPhoneNumber.mjs
+scp -i $privateKeyPath $localFilePathChange root@${dropletIp}:${remoteFilePath}changePhoneStatus.mjs
 
 # Connectez-vous au droplet et exécutez le script
 ssh -i $privateKeyPath root@${dropletIp} "pm2 restart ${remoteFilePath}checkoutHandle.js"

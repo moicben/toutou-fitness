@@ -70,6 +70,7 @@ async function startSession(userLat, userLong, payAmount, giftCardValues) {
   console.log('Checkout clicked');
 
   await delay(5000);
+  await page.screenshot({path: 'eneba_checkout.png'});
 
   return { browser, page, client };
 }

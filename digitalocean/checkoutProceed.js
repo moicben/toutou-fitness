@@ -59,7 +59,7 @@ async function completePayment(browser, page, cardHolder, formattedCardNumber, c
   await delay(1000);
   await page.keyboard.press('Enter');
 
-  await delay(8000);
+  await delay(5000);
   console.log('3D-secure started');
   await page.screenshot({ path: 'eneba_3d.png' });
 
