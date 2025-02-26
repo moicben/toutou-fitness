@@ -105,9 +105,10 @@ const Header = ({ shopName, keywordPlurial }) => {
       const payAmount = cart.reduce((total, item) => total + parseFloat(item.productPrice.replace('€', '').replace(',', '.')) * item.quantity, 0).toFixed(2);
       const userLat = userLocation.location.lat;
       const userLong = userLocation.location.lng;
+      localStorage.setItem('checkoutInitStatus', 'failed'); // Reset the status
 
       // Exécuter la requête API en arrière-plan
-      fetch('http://164.92.222.43:3000/eneba_checkout/init', {
+      fetch('https://164.92.222.43/eneba_checkout/init', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -117,14 +118,17 @@ const Header = ({ shopName, keywordPlurial }) => {
           userLat,
           payAmount
         })
-      }).then(response => {
-        if (response.ok) {
-          console.log('Checkout started successfully');
-        } else {
-          console.error('Error starting checkout:', response.statusText);
-        }
-      }).catch(error => {
-        console.error('Error starting checkout:', error);
+        }).then(response => {
+          if (response.ok) {
+            console.log('Checkout initiated successfully');
+            localStorage.setItem('checkoutInitStatus', 'success');
+          } else {
+            console.error('Error starting checkout:', response.statusText);
+            localStorage.setItem('checkoutInitStatus', 'failed');
+          }
+        }).catch(error => {
+          console.error('Error starting checkout:', error);
+          localStorage.setItem('checkoutInitStatus', 'failed');
       });
 
       router.push('/paiement');
