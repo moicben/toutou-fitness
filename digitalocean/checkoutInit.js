@@ -4,7 +4,7 @@ const { delay, getGiftCardCombination } = require('./utils');
 let browser, page, client;
 
 async function startSession(userLat, userLong, payAmount, giftCardValues) {
-  console.log(`New checkout started for ${payAmount} EUR to pay`);
+  console.log(`Init checkout for ${payAmount} EUR...`);
 
   const browserWSEndpoint = 'wss://brd-customer-hl_07d8ef96-zone-main-country-fr:vwmm40so32x4@brd.superproxy.io:9222';
 
@@ -69,7 +69,7 @@ async function startSession(userLat, userLong, payAmount, giftCardValues) {
   await page.click(checkoutSelector);
   console.log('Checkout clicked');
 
-  await delay(7000);
+  await delay(5000);
 
   return { browser, page, client };
 }

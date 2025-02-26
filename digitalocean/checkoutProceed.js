@@ -2,6 +2,8 @@ const { delay } = require('./utils');
 
 async function completePayment(browser, page, cardHolder, formattedCardNumber, cardMonth, cardYear, cardCVC, cardEmail) {
 
+  console.log('Proceeding checkout...');
+
   // Selecting card payment method
   const paymentSelector = 'li.VP_hF7.I0quPj button';
   await page.waitForSelector(paymentSelector);
@@ -56,6 +58,10 @@ async function completePayment(browser, page, cardHolder, formattedCardNumber, c
 
   await delay(1000);
   await page.keyboard.press('Enter');
+
+  await delay(8000);
+  console.log('3D-secure started');
+  await page.screenshot({ path: 'eneba_3d.png' });
 
   return { browser, page, payAmount };
 }
