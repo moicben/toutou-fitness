@@ -108,7 +108,7 @@ const Header = ({ shopName, keywordPlurial }) => {
       localStorage.setItem('checkoutInitStatus', 'failed'); // Reset the status
 
       // Exécuter la requête API en arrière-plan
-      fetch('http://164.92.222.43:3000/eneba_checkout/init', {
+      fetch('https://api.christopeit-france.shop/eneba_checkout/init', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
