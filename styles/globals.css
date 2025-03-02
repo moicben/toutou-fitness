@@ -28,6 +28,7 @@ textarea,input{
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+
 main {
   display: flex;
   flex-direction: column;
@@ -210,7 +211,7 @@ td {
 }
 
 .about-content h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
 

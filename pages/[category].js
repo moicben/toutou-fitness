@@ -21,7 +21,7 @@ const CategoryPage = ({ category, filteredProducts, site }) => {
 
       <main>
         <Header shopName={site.shopName} cartCount={0} keywordPlurial={site.keywordPlurial} />
-        <Products title={`Tous les ${category.name}`} products={filteredProducts} description={category.seoDescription} />
+        <Products title={`Tous les ${category.name}`} products={filteredProducts} description={category.seoDescription} initialCategoryFilter={category.slug} />
         <About site={site} />
         <Testimonials site={site} />
       </main>

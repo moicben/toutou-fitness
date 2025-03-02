@@ -1,3 +1,4 @@
+import { get } from 'http';
 import fetch from 'node-fetch';
 
 export async function getPhoneNumber() {
@@ -33,3 +34,6 @@ export async function getPhoneNumber() {
     }
   }
 }
+
+
+getPhoneNumber();

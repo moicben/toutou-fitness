@@ -9,7 +9,7 @@
     .intro h2,
     .products h2,
     .about h2{
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .hero h2{
@@ -33,53 +33,7 @@
         font-size: 1rem;
     }
 
-    .product-list{
-        grid-template-columns:repeat(2, 1fr);
-    }
-
-    .product-item{
-        padding: .75rem .5rem;
-        min-width: 160px;
-    }
-
-    .product-item img{
-        height:140px;
-        min-width: 140px;
-    }
-
-    .product-item h3{
-        font-size: 1rem;
-        height:66px;
-    }
-
-    .pagination span{
-        font-size: .75rem;
-        width: 45px;
-    }
-
-    .pagination button{
-        width: 110px;
-        font-size: .85rem;
-      }
-
-    .product-detail .wrapper{
-        padding: 2rem 1.5rem 0 1.5rem;
-    }
-
-    .product-columns{
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .product-info h1{
-        font-size: 1.5rem;
-        margin-top: 0;
-    }
-
-    .product-image img:nth-child(3){
-        display: none;
-    }
-
+    
 
 
 
@@ -111,9 +65,14 @@
 
     .testimonials h2{
         margin-top: 0;
-        font-size: 2rem;
+        font-size: 1.5rem;
         text-align: left;
     }
+
+    .testimonials h4 {
+        margin-bottom: 0rem;
+    }
+    
     .testimonials-content{
         flex-direction: column;
     }

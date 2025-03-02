@@ -11,15 +11,15 @@ const Testimonials = ({ site }) => {
             <h2>Nos sportifs témoignent !</h2>
             <div className='testimonials-content'>
                 <blockquote className="testimonial">
-                <p>{site.testimonial1}</p>
+                <h4>{site.testimonial1}</h4>
                 <p>{site.author1}</p>
                 </blockquote>
                 <blockquote className="testimonial">
-                <p>{site.testimonial2}</p>
+                <h4>{site.testimonial2}</h4>
                 <p>{site.author2}</p>
                 </blockquote>
                 <blockquote className="testimonial">
-                <p>{site.testimonial3}</p>
+                <h4>{site.testimonial3}</h4>
                 <p>{site.author3}</p>
                 </blockquote>
             </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import content from '../../content.json';
 import Header from '../../components/Header';
@@ -53,18 +53,27 @@ export default function ProductDetail({ product, site, products, relatedProducts
     return <div>Produit ou site non trouvé</div>;
   }
 
-  const handleAddToCart = async () => {
+    const handleAddToCart = async () => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const productWithQuantity = { ...product, quantity };
-    cart.push(productWithQuantity);
+    const productIndex = cart.findIndex(item => item.id === product.id);
+  
+    if (productIndex !== -1) {
+      // Si le produit est déjà dans le panier, augmenter la quantité
+      cart[productIndex].quantity += quantity;
+    } else {
+      // Sinon, ajouter le produit avec la quantité spécifiée
+      const productWithQuantity = { ...product, quantity };
+      cart.push(productWithQuantity);
+    }
+  
     localStorage.setItem('cart', JSON.stringify(cart));
-
+  
     // Changer le texte du bouton
     setButtonText('Ajouté !');
     setTimeout(() => setButtonText('Ajouter au panier'), 3000);
     // Ouvrir le drawer du panier
     document.querySelector('.cart-container').click();
-
+  
     // Call the conversion tracking function
     gtag_report_conversion();
   };
@@ -184,7 +193,7 @@ export default function ProductDetail({ product, site, products, relatedProducts
           </div>
         </section>
   
-        <Products title={`Vous pourriez également aimer :`} products={relatedProducts} />
+        <Products title={`Vous pourriez également aimer :`} products={relatedProducts} showCategoryFilter={false} />
       </main>
       <Footer shopName={site.shopName} footerText={site.footerText} />
     </div>

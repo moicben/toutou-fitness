@@ -290,6 +290,8 @@ section.product-hero {
   margin: 0 auto;
 }
 
+
+
 .product-content ul,
 .product-content ol,
 .product-description ul,
@@ -310,10 +312,16 @@ section.product-hero {
   padding: .25rem;
 }
 
+.product-content th {
+  font-weight: 400 !important;
+  text-align: left;
+}
+
 .product-content td {
   border: solid 1px grey;
   margin: 0;
-  padding: 4px 8px;
+  background: white;
+  padding: .75rem 1rem;
   font-size: .95rem;
 }
 
@@ -459,4 +467,16 @@ section.product-hero {
   .product-content hr{
     margin: 1rem 0;
   }
+
+    .product-content th{
+      margin-bottom: .5rem;
+      font-weight: 300 !important;
+    }
+
+  .product-content tr {
+    display: flex;
+    flex-direction: column;
+    margin-block: 1rem;
+  }
+
 }

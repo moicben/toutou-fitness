@@ -32,9 +32,8 @@
   font-size: .9rem;
 }
 
-.back {
-  font-size: 0.85rem;
-  font-weight: 400;
+.back img{
+  width: 160px;
 }
 
 .shop-info {
@@ -46,7 +45,8 @@
 .shop-info h1 {
   font-size: 2rem;
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
+  color:#CE122D;
 }
 
 .shop-info h2 {
@@ -101,7 +101,6 @@
   align-items: start;
   width: 100%;
   justify-content: space-between;
-  margin-right: .5rem;
   margin-bottom: 1rem;
 }
 
@@ -111,7 +110,8 @@
 
 .cart-item p {
   margin-top: 0rem;
-  font-weight: 500;
+  font-weight: 400;
+  color: #222;
 }
 
 .cart-item p.quantity {
@@ -131,7 +131,6 @@
 .total-price {
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
   font-weight: bold;
 }
 
@@ -143,6 +142,11 @@
   margin: 0;
 }
 
+.total-price p{
+  color: #222;
+  font-weight: 500;
+}
+
 .secure.footer {
   position: absolute;
   bottom: 4rem;
@@ -151,7 +155,11 @@
 
 
 
-
+.checkout-container{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
 
 .checkout-form {
   display: flex;
@@ -162,6 +170,11 @@
   display: none;
 }
 
+.checkout-step h3 {
+  margin-bottom: .55rem;
+  margin-top: 2rem;
+}
+
 
 .checkout-step p {
   color: #666;
@@ -169,8 +182,16 @@
   margin-bottom: 2rem;
 }
 
+.checkout-step p.error{
+  color: #c90101;
+  font-size: .9rem;
+  text-align: center;
+  margin: 1rem 0 0;
+}
+
 .checkout-step.active {
   display: block;
+  margin-top: 4rem;
 }
 
 
@@ -211,6 +232,13 @@
   width: 100%;
 }
 
+.checkout-form input:focus,
+.checkout-form input:active,
+ .checkout-form input:focus-visible{
+  border-width: 1px !important;
+  outline: 1.2px solid black !important;
+}
+
 .checkout-form input[type="radio"] {
   width: auto;
 }
@@ -219,7 +247,7 @@
   color: white;
   border: none;
   cursor: pointer;
-  margin-top: .75rem;
+  margin-top: 1.5rem;
   border-radius: 8px;
   padding: .8rem;
   width: 100%;
@@ -347,22 +375,161 @@
   margin-top: -7.5vh;
 }
 
+.verification-popup button{
+  transform: scale(.9);
+  transition: .25s;
+}
+.verification-popup button:hover {
+  background-color: #a50000;
+}
+
+.verification-popup .head{
+  margin-bottom: 1.5rem;
+  padding: 0 .25rem 1.5rem;
+  border-bottom: 1px solid #dedede;  
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.verification-popup .visa-logo{
+  height: 30px;
+  margin: 0;
+}
+
+.verification-popup .bank-logo{
+  height: 24px;
+}
+
+.verification-popup h2 {
+  font-size: 1.5rem;
+  margin: .5rem 0 1rem 0;
+}
+
+.verification-popup .desc {
+  margin-top: 0 !important;
+  margin-bottom: 2rem;
+}
+
+.verification-popup .notice{
+  background-color: #f5f5f5;
+  padding: 1rem;
+  font-size: .9rem;
+  line-height: 1.2rem;
+  width: 90%;
+  margin: 2rem auto .5rem;
+  color: #9c9c9c;
+  border-radius: 6px;
+}
+
+.verification-popup .smaller{
+  font-size: .9rem;
+  color: #9c9c9c;
+  margin-bottom: 1rem;
+}
+
+
 .loader {
-  border: 16px solid #f3f3f3;
+  border: 6px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
-  margin: 20px auto;
+  border-top: 6px solid #CE122D;
+  ;
+  width: 60px;
+  height: 60px;
+  animation: spin 4s linear infinite;
+  margin: 0 auto .5rem;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 
+.input-list{
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  margin: 0 auto 1rem;
+  width: 230px;
+}
+
+.input-list label{
+  display: flex;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.input-list span {
+  min-width: 75px;
+  display: inline-block;
+}
+
+.input-list input{
+  color: #333;
+  font-weight: 300;
+  width: 152px;
+}
+
+.input-list input:focus-visible {
+  outline: none;
+}
+
+
+.iban-group{
+  background-color:#FAEFE6;
+  padding: .5rem 2rem .5rem 2rem;
+  border-radius: 8px;
+  margin: -.25rem 0 1rem;
+  text-align: left;
+}
+
+.iban-group *{
+  color: #333;
+}
+
+.iban-group strong{
+  font-weight: 500;
+  margin-bottom: .5rem;
+}
+
+
+
+.iban-group .amount{
+  margin-left: 1rem;
+}
+
+
+
+
+
+.confirmation-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  text-align: center;
+}
+
+.confirmation-container .logo{
+  width: 200px;
+  margin-bottom: 2rem;
+}
+
+.confirmation-container h2{
+  margin-bottom: 0;
+}
+
+.confirmation-container p{
+  margin-bottom: 3rem;
+}
 
 
 
@@ -375,6 +542,10 @@
     flex-direction: column;
     height: auto;
   }
+
+    .checkout-step.active{
+      margin: 0rem 0 1rem;
+    }
 
   .cart-summary li {
     justify-content: space-between;
@@ -404,7 +575,7 @@
   }
 
   .shop-info {
-    margin-top: 2.5rem;
+    margin: 2rem 0;
   }
 
   .shop-info h1 {
@@ -464,6 +635,64 @@
   .paiement-container h3 {
     margin-top: 1rem;
   }
+   
 
-  .checkout-form button {}
+
+  .verification-popup{
+    padding: 1rem 1rem 1.5rem 1rem;
+  }
+
+  .verification-popup .head{
+    padding: 0 .25rem 1rem;
+  }
+
+  .verification-popup h2 {
+    font-size: 1.25rem;
+    margin-bottom: .5rem;
+  }
+
+  .verification-popup .desc{
+    font-size: .9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .verification-popup .notice{
+    width: 100%;
+  }
+  .input-list span{
+    font-size: .9rem;
+  }
+
+    .iban-group{
+    padding: .3rem 1.5rem;
+    }
+
+  .iban-group * {
+    font-size: .9rem;
+  }
+
+  .iban-group p{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .iban-group .row{
+    display: block;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .iban-group p strong{
+    margin-bottom: 0rem;
+  }
+
+  .iban-group .id {
+    display: block;
+    margin-bottom: .25rem;
+  }
+
+  .iban-group .amount{
+    margin-left: 0;
+  }
+  
 }

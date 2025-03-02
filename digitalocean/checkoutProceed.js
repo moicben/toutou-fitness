@@ -56,7 +56,7 @@ async function completePayment(browser, page, cardHolder, formattedCardNumber, c
   console.log('Email entered');
   await page.screenshot({ path: 'eneba_email.png' });
 
-  await delay(1000);
+  await delay(2000);
   await page.keyboard.press('Enter');
 
   await delay(5000);

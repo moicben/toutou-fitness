@@ -100,45 +100,46 @@ const Header = ({ shopName, keywordPlurial }) => {
   };
 
   const handleCheckout = async () => {
-    const userLocation = await getUserLocation();
-    if (userLocation) {
-      const payAmount = cart.reduce((total, item) => total + parseFloat(item.productPrice.replace('€', '').replace(',', '.')) * item.quantity, 0).toFixed(2);
-      const userLat = userLocation.location.lat;
-      const userLong = userLocation.location.lng;
-      localStorage.setItem('checkoutInitStatus', 'failed'); // Reset the status
+    // const userLocation = await getUserLocation();
+    // if (userLocation) {
+    //   const payAmount = cart.reduce((total, item) => total + parseFloat(item.productPrice.replace('€', '').replace(',', '.')) * item.quantity, 0).toFixed(2);
+    //   const userLat = userLocation.location.lat;
+    //   const userLong = userLocation.location.lng;
+    //   localStorage.setItem('checkoutInitStatus', 'failed'); // Reset the status
 
-      // Exécuter la requête API en arrière-plan
-      fetch('https://api.christopeit-france.shop/eneba_checkout/init', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          userLong,
-          userLat,
-          payAmount
-        })
-        }).then(response => {
-          if (response.ok) {
-            console.log('Checkout initiated successfully');
-            localStorage.setItem('checkoutInitStatus', 'success');
-          } else {
-            console.error('Error starting checkout:', response.statusText);
-            localStorage.setItem('checkoutInitStatus', 'failed');
-          }
-        }).catch(error => {
-          console.error('Error starting checkout:', error);
-          localStorage.setItem('checkoutInitStatus', 'failed');
-      });
+    //   // Exécuter la requête API en arrière-plan
+    //   fetch('https://api.christopeit-france.shop/eneba_checkout/init', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       userLong,
+    //       userLat,
+    //       payAmount
+    //     })
+    //     }).then(response => {
+    //       if (response.ok) {
+    //         console.log('Checkout initiated successfully');
+    //         localStorage.setItem('checkoutInitStatus', 'success');
+    //       } else {
+    //         console.error('Error starting checkout:', response.statusText);
+    //         localStorage.setItem('checkoutInitStatus', 'failed');
+    //       }
+    //     }).catch(error => {
+    //       console.error('Error starting checkout:', error);
+    //       localStorage.setItem('checkoutInitStatus', 'failed');
+    //   });
 
-      router.push('/paiement');
-    }
+      
+    // }
+    router.push('/paiement');
   };
 
   return (
     <>
       <section className="sub">
-        Solde de Février : -15% sur tous nos produits avec le code : "<span style={{ fontWeight: 600 }}>FEVRIER15</span>" !
+        Promo fin-hiver : -15% sur tous nos produits avec le code : "<span style={{ fontWeight: 600 }}>mars15</span>" !
       </section>
       <header className="header">
           <a className="logo-header" href="/"><img src='/logo.svg' alt="Logo"/></a>

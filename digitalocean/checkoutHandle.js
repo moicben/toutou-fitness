@@ -1,11 +1,9 @@
 const express = require('express');
-const cors = require('cors'); // Ajout du package cors
 const { startSession } = require('./checkoutInit');
 const { completePayment } = require('./checkoutProceed');
 const { verifyPayment } = require('./checkoutVerify');
 const app = express();
 
-app.use(cors());
 app.use(express.json());
 
 let browser, page, client;

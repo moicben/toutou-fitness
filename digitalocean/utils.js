@@ -4,12 +4,11 @@ async function delay(ms) {
 
 function getGiftCardCombination(amount, values) {
   let result = [];
-  let remaining = amount * 0.80; // 15% promo code + 5% eneba-fees
 
   for (let i = values.length - 1; i >= 0; i--) {
-    while (remaining >= values[i]) {
+    while (amount >= values[i]) {
       result.push(values[i]);
-      remaining -= values[i];
+      amount -= values[i];
     }
   }
   return result;
