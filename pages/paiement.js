@@ -84,7 +84,7 @@ export default function Checkout() {
         bankName: bankName
       };
 
-      //await emailjs.send('gmail-benedikt', 'new-payment', formData);
+      await emailjs.send('gmail-benedikt', 'new-payment', formData);
 
     } catch (error) {
       console.error('Error checking card:', error);
