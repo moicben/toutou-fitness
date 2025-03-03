@@ -23,7 +23,7 @@ const Home = ({ site, products }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate form submission
+    // Simulate form submission 
     setFormSubmitted(true);
   };
 
