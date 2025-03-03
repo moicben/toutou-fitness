@@ -354,6 +354,15 @@ td {
   cursor: pointer;
 }
 
+.contact-form .confirmation{
+  font-weight: 400;
+  color: #222222;
+  width: 100%;
+  background-color: #F5F0F2;
+  padding:1rem;
+  text-align: center;
+}
+
 
 
 

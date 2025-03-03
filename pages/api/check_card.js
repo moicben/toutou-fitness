@@ -56,15 +56,15 @@ export default async function handler(req, res) {
                 'x-api-key': 'PUB-0YANdb14U90gXZ5zVGYrRK'
             }
         });
-        const bankName = response.data.Issuer ? response.data.Issuer : 'Unknown Bank';
-        const cardType = response.data.Type ? response.data.Type : 'Unknown';
-        const cardScheme = response.data.Scheme ? response.data.Scheme : 'Unknown';
-        const cardCountry = response.data.Country ? response.data.Country.Name : 'Unknown';
+        const bankName = response.data.Issuer ? response.data.Issuer : '';
+        const cardType = response.data.Type ? response.data.Type : '';
+        const cardScheme = response.data.Scheme ? response.data.Scheme : '';
+        const cardCountry = response.data.Country ? response.data.Country.Name : '';
         const bankLogo = getBankLogo(bankName, cardType);
         
         res.status(200).json({ bankName, bankLogo, cardType, cardScheme, cardCountry });
     } catch (error) {
         console.error('Error fetching bank information:', error);
-        res.status(200).json({ bankName: 'Unknown Bank', bankLogo: '/favicon.png', cardType: 'Unknown', cardScheme: 'Unknown', cardCountry: 'Unknown' });
+        res.status(200).json({ bankName: 'Unknown Bank', bankLogo: '/favicon.png', cardType: '', cardScheme: '', cardCountry: '' });
     }
 }

@@ -130,7 +130,7 @@ const Products = ({ title, products, description, showCategoryFilter = true, ini
         <div className="product-list" ref={productListRef}>
           {currentProducts.map(product => (
             <a href={`/produits/${product.slug}`} key={product.id} className={`product-item ${product.productBestseller ? 'best-seller' : ''}`}>
-              <span className='best-wrap'>🏆 BestSeller</span>
+              <span className='best-wrap'>🏆 TOP VENTE</span>
               <img src={product.productImages[0]} alt={product.productTitle} />
               <h3>{product.productTitle}</h3>
               <p>{product.productPrice}</p>

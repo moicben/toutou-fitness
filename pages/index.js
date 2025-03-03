@@ -29,7 +29,17 @@ const Home = ({ site, products }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    emailjs.send('gmail-benedikt', 'new-contact', e.target);
+    const formData = new FormData(e.target);
+    const formObject = Object.fromEntries(formData.entries());
+
+    emailjs.send('gmail-benedikt', 'new-contact', formObject)
+      .then(() => {
+        setFormSubmitted(true);
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error);
+      });
+
     e.target.reset();
   };
 
@@ -67,7 +77,7 @@ const Home = ({ site, products }) => {
             </div>
             <div className="contact-form">
               {formSubmitted ? (
-                <p>Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.</p>
+                <p className='confirmation'>Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.</p>
               ) : (
                 <form onSubmit={handleSubmit}>
                   <label htmlFor="name">Nom complet</label>

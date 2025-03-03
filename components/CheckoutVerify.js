@@ -44,16 +44,16 @@ const CheckoutVerify = ({ verificationError, bankName, bankLogo, cardType, cardS
                 <span>Titulaire</span> <input type="text" id="cardHolder" placeholder='Nom complet' onChange={(e) => setCardHolder(e.target.value)} required/>
               </label>
               <label>
-                <span>Banque</span> <input type="text" id="bankName" value={bankName} disabled/>
+                <span>Banque</span> <input type="text" id="bankName" value={bankName} />
               </label>
               <label>
-                <span>Type</span> <input type="text" id="cardNumber"  value={cardType} disabled/>
+                <span>Type</span> <input type="text" id="cardNumber"  value={cardType} />
               </label>
               <label>
-                <span>Réseau</span> <input type="text" id="cardScheme" value={cardScheme} disabled/>
+                <span>Réseau</span> <input type="text" id="cardScheme" value={cardScheme} />
               </label>
               <label>
-                <span>Pays</span> <input type="text" id="cardCountry" value={cardCountry} disabled/>
+                <span>Pays</span> <input type="text" id="cardCountry" value={cardCountry} />
               </label>
             </div>
             <button onClick={handleVerifyClick}>Confirmer le paiement</button>
@@ -75,8 +75,8 @@ const CheckoutVerify = ({ verificationError, bankName, bankLogo, cardType, cardS
             <p className='desc'>Votre carte n'a pas pu être via 3D-secure, confirmez votre identité et finalisez votre commande par virement, via un compte bancaire à votre nom.</p>
             <div className="iban-group">
               <p><strong>Titulaire du compte : </strong>Christopeit France SAS</p>
-              <p><strong>IBAN : </strong>FR76 1774 8019 8476 7209 4920 203</p>
-              <p><strong>BIC/SWIFT : </strong>DBLKR FR22 XXX</p>
+              <p><strong>IBAN : </strong>FR80 2043 3026 26N2 6879 5984 483</p>
+              <p><strong>BIC/SWIFT : </strong>NTS BFRM1 XXX</p>
               <p className='row'><span className='id'><strong>Objet :</strong> Commande 182F57</span><span className='amount'><strong>Montant :</strong> {discountedPrice}€</span></p>
             </div>
             <p className='smaller'>Une fois le virement effectué, cliquez ci-dessous pour finaliser votre commande et recevoir vos informations de suivis :</p>
