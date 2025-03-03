@@ -311,15 +311,31 @@ td {
   flex-direction: column;
 }
 
+.contact-form .row-form{
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-form .row-form span{
+  padding-bottom: .5rem;
+}
+
 .contact-form label {
   margin-bottom: 0.5rem;
   font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form .row-form label {
+  width: calc(50% - .5rem);
 }
 
 .contact-form input,
 .contact-form textarea {
   margin-bottom: 1rem;
   padding: 0.75rem;
+  padding-right: 0;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;

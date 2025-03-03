@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
+import emailjs from 'emailjs-com';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -21,10 +22,15 @@ const Home = ({ site, products }) => {
     setCartCount(storedCart.length);
   }, []);
 
+  useEffect(() => {
+    emailjs.init("8SL7vzVHt7qSqEd4i");
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate form submission 
-    setFormSubmitted(true);
+
+    emailjs.send('gmail-benedikt', 'new-contact', e.target);
+    e.target.reset();
   };
 
   return (
@@ -67,9 +73,15 @@ const Home = ({ site, products }) => {
                   <label htmlFor="name">Nom complet</label>
                   <input placeholder="Paul Dupont" type="text" id="name" name="name" required />
                   
-                  <label htmlFor="email">Email</label>
-                  <input placeholder='exemple@gmail.com' type="email" id="email" name="email" required />
-                  
+                  <div className='row-form'>
+                    <label htmlFor="email"><span>Email</span>
+                      <input placeholder='exemple@gmail.com' type="email" id="email" name="email" required />
+                    </label>
+                    <label htmlFor="phone"><span>Téléphone</span>
+                      <input placeholder='07 12 34 56 78' type="text" id="phone" name="phone" required />
+                    </label>
+                  </div>
+
                   <label htmlFor="message">Votre demande</label>
                   <textarea placeholder="Écrivez votre demande ici..." id="message" name="message" required></textarea>
                   
