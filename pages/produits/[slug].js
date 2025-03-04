@@ -109,6 +109,9 @@ export default function ProductDetail({ product, site, products, relatedProducts
 
   const images = product.productImages || [];
   const visibleImages = images.slice(visibleImageIndex, visibleImageIndex + 4);
+  if (visibleImages.length < 4) {
+    visibleImages.push(...images.slice(0, 4 - visibleImages.length));
+  }
 
   return (
     <div className="container">
