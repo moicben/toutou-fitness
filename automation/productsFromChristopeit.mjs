@@ -18,11 +18,9 @@ async function translateText(text) {
     const response = await openai.chat.completions.create({
         model: 'gpt-3.5-turbo',
         messages: [
-            { role: 'system', content: 'Tu es un outil de traduction allemand vers français, je te donne du texte en allemand, et tu me réponds avec sa traduction française singulière. ' },
+            { role: 'system', content: 'Tu es un outil de traduction allemand vers français, je te donne du texte en allemand, et tu me réponds avec sa traduction en français. ' },
             { role: 'user', content: `Voici le texte à traduire : ${text} \n
-            Traduis le texte en français singulier. \n 
-            Ne supprimer pas les balises HTML dans le contenu si il y en a. \n
-            Réponds uniquement avec le texte traduit rien d'aautre. \n
+            Réponds uniquement avec le texte traduit rien d'autre. \n
             Voici le texte traduit : \n
             ` }
         ],
