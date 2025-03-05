@@ -46,7 +46,7 @@ const Home = ({ site, products }) => {
   return (
     <div key={site.id} className="container">
       <main>
-        <Header shopName={site.shopName} cartCount={cartCount} keywordPlurial={site.keywordPlurial}/>
+        <Header title={`${site.shopName} - ${site.keywordPlurial}`} shopName={site.shopName} cartCount={cartCount} keywordPlurial={site.keywordPlurial}/>
         
         <section className="hero">
             <h1>{site.heroTitle}</h1>
