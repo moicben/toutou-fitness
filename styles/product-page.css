@@ -107,13 +107,27 @@ section.product-hero {
 }
 
 .product-info .product-price {
-  color: #555;
+  color: #000;
   margin-top: 0rem;
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 2rem;
   border-bottom: #ccc solid 1px;
   padding-bottom: 2rem;
+}
+
+.product-info .product-price.new{
+  color: #CE122D;
+  position: relative;
+}
+
+.product-info .initial-price{
+  position: relative;
+  font-size: 1rem;
+  color: #666;
+  font-weight: 400;
+  text-decoration: line-through;
+  left: 1rem;
 }
 
 .product-description{

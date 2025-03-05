@@ -154,7 +154,14 @@ export default function ProductDetail({ product, site, products, relatedProducts
           </div>
           <div className="product-info">
             <h1>{product.productTitle}</h1>
-            <p className="product-price">{product.productPrice}</p>
+              {product.productDiscounted ? (
+                <>
+                  
+                  <p className='product-price new'>{product.productPrice}<span className='initial-price'>{product.productDiscounted}</span></p>
+                </>
+              ) : (
+                <p className="product-price">{product.productPrice}</p>
+              )}
             <div className="product-description" dangerouslySetInnerHTML={{ __html: product.productDescription }} />
 
             <article className="purchase-row">

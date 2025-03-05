@@ -133,7 +133,16 @@ const Products = ({ title, products, description, showCategoryFilter = true, ini
               <span className='best-wrap'>🏆 TOP VENTE</span>
               <img src={product.productImages[0]} alt={product.productTitle} />
               <h3>{product.productTitle}</h3>
-              <p>{product.productPrice}</p>
+              <p>
+                {product.productDiscounted ? (
+                  <>
+                    <span className='initial-price'>{product.productDiscounted}</span>
+                    <span className='new-price'>{product.productPrice}</span>
+                  </>
+                ) : (
+                  product.productPrice
+                )}
+              </p>
             </a>
           ))}
         </div>

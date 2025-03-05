@@ -275,6 +275,7 @@
 
     .sub{
         font-size: .75rem;
+        padding: .75rem;
     }
     
     .header{
@@ -332,6 +333,18 @@
 
     .cart-drawer{
         width: 85%;
+        padding: 1.5rem 1.5rem;
+    }
+
+    .total,
+    .checkout{
+      right: 1.5rem;
+      left: 1.5rem;
+    }
+
+    .cart-drawer .close{
+      right: 1rem;
+      top: -.25rem;
     }
 
     .cart-drawer h3{
