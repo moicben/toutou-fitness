@@ -184,6 +184,10 @@ export default function ProductDetail({ product, site, products, relatedProducts
                 <p>- Livraison gratuite sans minimum d'achat</p>
                 <p>- Retours étendus jusqu'au 14/03/2025 </p>
             </div>
+            <details>
+              <summary>Détails techniques du produit</summary>
+              <div className="product-content" dangerouslySetInnerHTML={{ __html: product.productDetails }} />
+            </details>
           </div>
         </div>
       </section>
@@ -191,12 +195,14 @@ export default function ProductDetail({ product, site, products, relatedProducts
         <Reviews product={product} />
   
         <section className="product-details">
-          <div className="wrapper">
-            <div className="product-content" dangerouslySetInnerHTML={{ __html: product.productDetails }} />
-          </div>
+          <div className="wrapper advantages" dangerouslySetInnerHTML={{ __html: product.productAdvantages }}/>
+          <div className="wrapper" dangerouslySetInnerHTML={{ __html: product.productHighlight1 }}/>
+          <div className="wrapper" dangerouslySetInnerHTML={{ __html: product.productHighlight2 }}/>
+          <div className="wrapper" dangerouslySetInnerHTML={{ __html: product.productHighlight3 }}/>
+          <div className="wrapper" dangerouslySetInnerHTML={{ __html: product.productHighlight4 }}/>   
         </section>
   
-        <Products title={`Vous pourriez également aimer :`} products={relatedProducts} showCategoryFilter={false} />
+        <Products title={`Nos autres ${product.productCategory}`} products={relatedProducts} showCategoryFilter={false} />
       </main>
       <Footer shopName={site.shopName} footerText={site.footerText} />
     </div>
