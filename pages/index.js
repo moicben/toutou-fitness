@@ -45,10 +45,10 @@ const Home = ({ site, products }) => {
 
   return (
     <div key={site.id} className="container">
-      <main>
-        <Head>
-        <title>{`${site.shopName} - ${site.keywordPlurial}`}</title>
+      <Head>
+        <title>{`${site.shopName}`}</title>
       </Head>
+      <main>
 
         <Header shopName={site.shopName} cartCount={cartCount} keywordPlurial={site.keywordPlurial}/>
         
