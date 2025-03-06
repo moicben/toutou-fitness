@@ -24,7 +24,7 @@ const Boutique = ({ site, products }) => {
 
       <main>
         <Header shopName={site.shopName} cartCount={cartCount} keywordPlurial={site.keywordPlurial} />
-        <Products title={`Tous les équipements de fitness`} products={products} description={site.productsDescription} />
+        <Products title={`Tous nos équipements`} products={products} description={site.productsDescription} />
         <About site={site} />
         <Testimonials site={site} />
       </main>

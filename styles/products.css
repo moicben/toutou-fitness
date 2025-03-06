@@ -3,7 +3,7 @@
 /*PRODUCT GRID*/
 
 .products .wrapper{
-  padding: 3rem 4rem 4rem 4rem;
+  padding: 2rem 4rem 4rem 4rem;
   width: 100%;
 }
 
@@ -152,8 +152,14 @@
 
 
 @media (max-width:1024px){
+
+  .products .wrapper{
+    padding: 2rem 2rem 4rem 2rem;
+  }
+
   .products h2{
     margin: 1.5rem auto 1.5rem;
+    font-size: 1.5rem;
   }
   .products h4{
     font-size: 1rem;

@@ -151,6 +151,7 @@ section.product-hero {
 .product-info .product-content {
   margin-bottom: 1rem;
   max-width: 520px;
+  font-weight: 300;
 }
 
 .purchase-row{
@@ -403,7 +404,7 @@ details .product-content table{
 }
 
 .product-content th {
-  font-weight: 400 !important;
+  font-weight: 300 !important;
   text-align: left;
 }
 
@@ -422,6 +423,11 @@ details .product-content table{
 .product-content h4 {
   margin-bottom: -.5rem;
   font-weight: 600;
+}
+
+.product-content span{
+  font-weight: 400;
+  color: #666;
 }
 
 .product-content,
@@ -457,6 +463,10 @@ details .product-content table{
   padding: 2rem 1rem;
   }
 
+  .product-columns{
+    gap: 2rem;
+  }
+
   .product-image{
     flex-direction: column-reverse;
   }
@@ -475,9 +485,8 @@ details .product-content table{
   
 
   .thumbnail-container {
-  flex-direction: row;
-  gap: 5px;
-  flex-wrap: wrap;
+    flex-direction: row;
+    gap: 5px;
   }
 
   .thumbnail {
@@ -495,7 +504,7 @@ details .product-content table{
     font-size: 1.25rem;
   }
 
-  .product-reviews .slide p
+  .product-reviews .slide p,
   .product-info h1 {
     font-size: 1.5rem;
   }
@@ -566,9 +575,15 @@ details .product-content table{
 
   .product-details .wrapper p:first-child {
     font-size: 1.5rem;
-    line-height: 2.1rem;
+    line-height: 1.6rem;
     margin: 1rem 0;
   }
+
+  .product-details .wrapper p:last-child{
+    font-size: 1.1rem;
+    margin: 1rem 0 1rem 0;
+  }
+
 
 
   .product-details iframe,
@@ -587,10 +602,12 @@ details .product-content table{
 
   .product-details .advantages h2 {
     font-size: 1.5rem;
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
   }
 
   .product-details .advantages h4{
-    margin: 1rem 0 2rem 0;
+    margin: .5rem 0 1.5rem 0;
   }
 
   .product-content {

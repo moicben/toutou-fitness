@@ -195,6 +195,21 @@ export default function ProductDetail({ product, site, products, relatedProducts
               <summary>Détails techniques du produit</summary>
               <div className="product-content" dangerouslySetInnerHTML={{ __html: product.productDetails }} />
             </details>
+            <details>
+              <summary>Paiement, livraison et retours</summary>
+              <div className="product-content">
+                <span>Moyen de paiement :</span> cartes bancaires (Visa, MasterCard, AMEX), PayPal et virement bancaire.
+                <br /><br />
+                <span>Expédition :</span> les commandes sont expédiées sous 24 à 48h ouvrées avec un suivi en temps réel.
+                <br /><br />
+                <span>Suivi :</span> les délais de livraison varient entre 2 et 5 jours ouvrés selon votre localisation. Vous recevrez par mail un numéro de suivi dès l’expédition.
+                <br /><br />
+                <span>Retours :</span>Si un équipement ne vous convient pas, vous disposez de 60 jours après réception pour le retourner gratuitement. Une fois le colis reçu en parfait état, nous procédons au remboursement sous 2 à 5 jours ouvrés.
+                <br /><br />
+                <span>Support :</span> Disponible 7j/7 via formulaire en ligne ou par mail à sav@christopeit-france.shop
+                <br /><br />
+              </div>
+            </details>
           </div>
         </div>
       </section>
@@ -209,7 +224,7 @@ export default function ProductDetail({ product, site, products, relatedProducts
           <div className="wrapper" dangerouslySetInnerHTML={{ __html: product.productHighlight4 }}/>   
         </section>
   
-        <Products title={`Nos autres ${product.productCategory}`} products={relatedProducts} showCategoryFilter={false} />
+        <Products title={`Nos autres ${product.productCategoryName}`} products={relatedProducts} showCategoryFilter={false} />
       </main>
       <Footer shopName={site.shopName} footerText={site.footerText} />
     </div>
@@ -228,7 +243,7 @@ export async function getStaticProps({ params }) {
   const product = productsData.products.find(p => p.slug === params.slug);
   const site = content.sites[0];
   const products = productsData.products.filter(p => p.siteId === site.id);
-  const relatedProducts = productsData.products.filter(p => p.productCategory === product.productCategory && p.slug !== product.slug);
+  const relatedProducts = productsData.products.filter(p => p.productCategorySlug === product.productCategorySlug && p.slug !== product.slug);
 
   return {
     props: {  

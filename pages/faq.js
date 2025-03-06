@@ -9,20 +9,78 @@ const Faq = ({ site }) => {
         setActiveIndex(activeIndex === index ? null : index);
     };
 
-    const faqs = [
-        { question: 'Quelle est votre politique de retour ?', answer: 'Vous pouvez retourner tout article dans les 30 jours suivant l\'achat.' },
-        { question: 'Comment puis-je suivre ma commande ?', answer: 'Vous pouvez suivre votre commande en utilisant le numéro de suivi fourni dans votre email de confirmation.' },
-        { question: 'Offrez-vous la livraison internationale ?', answer: 'Oui, nous offrons la livraison internationale vers de nombreux pays.' },
-        { question: 'Comment puis-je contacter le service client ?', answer: 'Vous pouvez contacter notre service client via notre formulaire de contact sur le site.' },
-        { question: 'Quels modes de paiement acceptez-vous ?', answer: 'Nous acceptons les cartes de crédit, PayPal et les virements bancaires.' },
-        { question: 'Puis-je modifier ma commande après l\'avoir passée ?', answer: 'Oui, vous pouvez modifier votre commande tant qu\'elle n\'a pas encore été expédiée.' },
-        { question: 'Proposez-vous des réductions pour les commandes en gros ?', answer: 'Oui, nous offrons des réductions pour les commandes en gros. Veuillez nous contacter pour plus de détails.' },
-        { question: 'Comment puis-je m\'inscrire à votre newsletter ?', answer: 'Vous pouvez vous inscrire à notre newsletter en entrant votre email dans le champ prévu à cet effet en bas de notre site.' },
-        { question: 'Quels sont vos délais de livraison ?', answer: 'Les délais de livraison varient en fonction de votre localisation et du mode de livraison choisi.' },
-        { question: 'Puis-je annuler ma commande ?', answer: 'Oui, vous pouvez annuler votre commande tant qu\'elle n\'a pas encore été expédiée.' },
-        { question: 'Comment puis-je utiliser un code promo ?', answer: 'Vous pouvez entrer votre code promo lors du processus de paiement dans le champ prévu à cet effet.' },
-        { question: 'Avez-vous un programme de fidélité ?', answer: 'Oui, nous avons un programme de fidélité. Vous pouvez vous inscrire dès votre première commande réalisée pour commencer à accumuler des points.' },
-    ];
+   const faqs = [
+    {
+        question: '📦 Quelle est votre politique de retour ?',
+        answer: 'Vous disposez de 30 jours après réception pour retourner un article.<br/><br/>' +
+                '- L’article doit être neuf, non utilisé et dans son emballage d’origine.<br/>' +
+                '- Contactez-nous pour obtenir une étiquette de retour et les instructions nécessaires.<br/>' +
+                '- Une fois le colis reçu et vérifié, le remboursement intégral sera effectué sous 2 à 5 jours ouvrés.'
+    },
+    {
+        question: '🚚 Comment puis-je suivre ma commande ?',
+        answer: 'Dès l’expédition, vous recevrez un email de confirmation contenant un numéro de suivi.<br/><br/>' +
+                'Vous pouvez également suivre votre commande en temps réel via votre espace client.'
+    },
+    {
+        question: '🌍 Offrez-vous la livraison internationale ?',
+        answer: 'Oui, nous livrons dans plusieurs pays européens et à l’international.<br/><br/>' +
+                'Les frais et délais varient selon la destination. Les options de livraison disponibles s’afficheront lors de votre commande.'
+    },
+    {
+        question: '📞 Comment puis-je contacter le service client ?',
+        answer: 'Notre service client est disponible 7j/7 pour répondre à vos questions.<br/><br/>' +
+                '📧 Email : sav@christopeit-france.shop<br/>' +
+                '📩 Formulaire de contact : Disponible sur notre site'
+    },
+    {
+        question: '💳 Quels modes de paiement acceptez-vous ?',
+        answer: 'Nous acceptons plusieurs méthodes de paiement sécurisées :<br/><br/>' +
+                '- Cartes bancaires : Visa, Mastercard, American Express<br/>' +
+                '- PayPal<br/>' +
+                '- Virement bancaire'
+    },
+    {
+        question: '🛍 Puis-je modifier ma commande après l\'avoir passée ?',
+        answer: 'Oui, tant que votre commande n’a pas encore été expédiée.<br/><br/>' +
+                'Contactez-nous au plus vite pour toute modification.<br/>' +
+                'Une fois expédiée, il ne sera plus possible de la modifier, mais vous pourrez exercer votre droit de retour sous 30 jours.'
+    },
+    {
+        question: '🔖 Proposez-vous des réductions pour les commandes en gros ?',
+        answer: 'Oui, nous offrons des tarifs préférentiels pour les commandes en grande quantité.<br/><br/>' +
+                'Contactez-nous via notre formulaire de contact pour obtenir un devis personnalisé.'
+    },
+    {
+        question: '📩 Comment puis-je m\'inscrire à votre newsletter ?',
+        answer: 'Inscrivez-vous en entrant votre adresse email en bas de notre site.<br/><br/>' +
+                'Vous recevrez en avant-première nos promotions, conseils fitness et nouveautés.'
+    },
+    {
+        question: '⏳ Quels sont vos délais de livraison ?',
+        answer: 'Nos délais de livraison varient selon votre localisation :<br/><br/>' +
+                '- France Métropolitaine : 3 à 5 jours ouvrés<br/>' +
+                '- Belgique, Luxembourg, Suisse : 2 à 5 jours ouvrés<br/>' +
+                '- Autres destinations internationales** : 7 à 14 jours ouvrés'
+    },
+    {
+        question: '❌ Puis-je annuler ma commande ?',
+        answer: 'Oui, tant qu’elle **n’a pas encore été expédiée**.<br/><br/>' +
+                'Une fois l’expédition réalisée, vous pourrez effectuer un **retour sous 30 jours** après réception.'
+    },
+    {
+        question: '🎟 Comment puis-je utiliser un code promo ?',
+        answer: 'Lors du passage en caisse, entrez votre **code promo** dans le champ prévu à cet effet.<br/><br/>' +
+                'Cliquez sur **Appliquer** et la réduction sera automatiquement ajoutée à votre total.'
+    },
+    {
+        question: '⭐ Avez-vous un programme de fidélité ?',
+        answer: 'Oui ! Notre programme de fidélité vous permet **d’accumuler des points à chaque achat**.<br/><br/>' +
+                'Ces points sont convertibles en **réductions** pour vos prochains achats.<br/>' +
+                'L’inscription est **gratuite et automatique** dès votre première commande.'
+    }
+];
+
 
     return (
         <div key={site.id} className="container">
@@ -37,8 +95,7 @@ const Faq = ({ site }) => {
                             <div className="faq-question" onClick={() => toggleFAQ(index)}>
                                 {faq.question}
                             </div>
-                            <div className={`faq-answer ${activeIndex === index ? 'active' : ''}`}>
-                                {faq.answer}
+                            <div className={`faq-answer ${activeIndex === index ? 'active' : ''}`} dangerouslySetInnerHTML={{ __html: faq.answer }}>
                             </div>
                         </div>
                     ))}

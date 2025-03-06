@@ -43,7 +43,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const category = categoriesData.categories.find((cat) => cat.slug === params.category);
   const filteredProducts = productsData.products.filter(
-    (product) => product.productCategory === params.category
+    (product) => product.productCategorySlug === params.category
   );
 
   if (!category) {

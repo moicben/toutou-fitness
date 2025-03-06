@@ -16,7 +16,7 @@ const Products = ({ title, products, description, showCategoryFilter = true, ini
                        (priceRange === '300-400' && price >= 300 && price < 400) ||
                        (priceRange === '400+' && price >= 400) ||
                        (priceRange === 'all');
-    const categoryMatch = categoryFilter === 'all' || product.productCategory === categoryFilter;
+    const categoryMatch = categoryFilter === 'all' || product.productCategorySlug === categoryFilter;
     return priceMatch && categoryMatch;
   });
 
