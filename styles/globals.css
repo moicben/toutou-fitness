@@ -182,6 +182,7 @@ td {
 .intro h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: #666;
 }
 
 .intro p {
@@ -213,6 +214,7 @@ td {
 .about-content h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: #505050;
 }
 
 .about-content p {
