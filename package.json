@@ -8,12 +8,13 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@mollie/api-client": "^4.2.0",
     "@netlify/plugin-nextjs": "^5.9.0",
     "@stripe/react-stripe-js": "^3.1.1",
     "@stripe/stripe-js": "^5.4.0",
     "@vitalets/google-translate-api": "^9.2.1",
     "axios": "^1.8.1",
-    "emailjs-com": "^3.2.0", 
+    "emailjs-com": "^3.2.0",
     "https": "^1.0.0",
     "jimp": "^1.6.0",
     "next": "^15.1.3",

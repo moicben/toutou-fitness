@@ -31,7 +31,7 @@ export default function Mentions() {
             <li><strong>Numéro de SIRET</strong> : 851 990 135</li>
             <li><strong>Numéro de TVA intracommunautaire</strong> : FR47851990135</li>
             <li><strong>Responsable de la publication</strong> : Veronique BERENGÈRE</li>
-            <li><strong>Contact email</strong> : contact@expert-francais.shop</li>
+            <li><strong>Contact email</strong> : contact@christopeit-france.shop</li>
           </ul>
           <h2>2. Hébergement</h2>
           <p>Le site est hébergé par :</p>
@@ -63,7 +63,7 @@ export default function Mentions() {
             <li>Droit à la portabilité des données.</li>
             <li>Droit de limiter ou de vous opposer au traitement des données.</li>
           </ul>
-          <p>Pour exercer ces droits, contactez-nous à : contact@expert-francais.shop</p>
+          <p>Pour exercer ces droits, contactez-nous à : contact@christopeit-france.shop</p>
           <h2>5. Cookies</h2>
           <p>
             Le site utilise des cookies pour améliorer l’expérience utilisateur. 

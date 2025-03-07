@@ -84,7 +84,7 @@ const PolitiqueDeConfidentialite = () => {
           <section>
             <h2>7. Contact</h2>
             <p>
-              Pour toute question concernant cette politique de confidentialité, vous pouvez nous contacter à l'adresse suivante : contact@expert-francais.shop.
+              Pour toute question concernant cette politique de confidentialité, vous pouvez nous contacter à l'adresse suivante : contact@christopeit-france.shop.
             </p>
           </section>
         </section>

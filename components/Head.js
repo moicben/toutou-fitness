@@ -32,6 +32,8 @@ const MyHead = ({ title, description, favicon }) => {
           })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
         `}
       </script>
+
+      <script src="https://js.mollie.com/v1/mollie.js"></script>
     </Head>
   );
 };

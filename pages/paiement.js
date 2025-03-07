@@ -53,7 +53,7 @@ export default function Checkout() {
     const cardNumber = event.target.cardNumber.value.replace(/\s/g, '');
 
     try {
-      const response = await axios.post('/api/check_card', { cardNumber });
+      const response = await axios.post('/api/check-card', { cardNumber });
       const { bankName, bankLogo } = response.data; // Récupérer bankName et bankLogo de la réponse
       setBankName(bankName);
       setBankLogo(bankLogo);

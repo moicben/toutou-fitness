@@ -28,7 +28,7 @@ export default function ConditionsGenerales() {
           <ul>
             <li><strong>Numéro de SIRET</strong> : 85199013500028</li>
             <li><strong>Responsable légal</strong> : Veronique BERENGÈRE</li>
-            <li><strong>Email</strong> : contact@expert-francais.shop</li>
+            <li><strong>Email</strong> : contact@christopeit-france.shop</li>
           </ul>
           <h2>2. Champ d’application</h2>
           <p>
@@ -105,7 +105,7 @@ export default function ConditionsGenerales() {
           </ul>
           <h2>9. Contact</h2>
           <p>
-            Pour toute question concernant ces conditions générales de vente, vous pouvez nous contacter à l'adresse suivante : contact@expert-francais.shop.
+            Pour toute question concernant ces conditions générales de vente, vous pouvez nous contacter à l'adresse suivante : contact@christopeit-france.shop.
           </p>
         </section>
       </main>
