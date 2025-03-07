@@ -33,7 +33,7 @@ const CheckoutSummary = ({ cart, totalPrice, discount, discountedPrice, site }) 
           <p>{`${parseFloat(discountedPrice).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`}</p>
         </div>
       </div>
-      <p className='secure footer'>© 2024 - Tous droits réservés -  {site.shopName} SAS 32455</p>
+      <p className='secure footer'>© Tous droits réservés -  {site.shopName} SAS 32455</p>
     </>
   );
 };

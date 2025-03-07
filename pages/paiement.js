@@ -96,6 +96,11 @@ export default function Checkout() {
     setCurrentStep(step);
   };
 
+  const handleRetry = () => {
+    setShowVerificationWrapper(false);
+    setCurrentStep(1);
+  };
+
   return (
     <div className="paiement-container">
       <div className="left-column">
@@ -123,6 +128,7 @@ export default function Checkout() {
           cardScheme={cardScheme}
           cardCountry={cardCountry}
           discountedPrice={discountedPrice}
+          onRetry={handleRetry} // Passer la fonction handleRetry
         />
       )}
     </div>

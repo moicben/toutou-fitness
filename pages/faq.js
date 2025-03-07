@@ -30,7 +30,7 @@ const Faq = ({ site }) => {
     {
         question: '📞 Comment puis-je contacter le service client ?',
         answer: 'Notre service client est disponible 7j/7 pour répondre à vos questions.<br/><br/>' +
-                '📧 Email : sav@christopeit-france.shop<br/>' +
+                '📧 Email : support@christopeit-france.shop<br/>' +
                 '📩 Formulaire de contact : Disponible sur notre site'
     },
     {

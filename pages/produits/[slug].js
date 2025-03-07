@@ -206,7 +206,7 @@ export default function ProductDetail({ product, site, products, relatedProducts
                 <br /><br />
                 <span>Retours :</span>Si un équipement ne vous convient pas, vous disposez de 60 jours après réception pour le retourner gratuitement. Une fois le colis reçu en parfait état, nous procédons au remboursement sous 2 à 5 jours ouvrés.
                 <br /><br />
-                <span>Support :</span> Disponible 7j/7 via formulaire en ligne ou par mail à sav@christopeit-france.shop
+                <span>Support :</span> Disponible 7j/7 via formulaire en ligne ou par mail à support@christopeit-france.shop
                 <br /><br />
               </div>
             </details>
