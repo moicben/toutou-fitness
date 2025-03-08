@@ -99,6 +99,14 @@ const Header = ({ shopName, keywordPlurial }) => {
     }
   };
 
+  useEffect(() => {
+    // Applique display none à : #__EAAPS_PORTAL>div>div>div.Window__Container-sc-251c030e-0.iKEatB a
+    const element = document.querySelector('#__EAAPS_PORTAL>div>div>div.Window__Container-sc-251c030e-0.iKEatB a');
+    if (element) {
+      element.style.display = 'none';
+    }
+  }, []);
+
   const handleCheckout = async () => {
     // const userLocation = await getUserLocation();
     // if (userLocation) {

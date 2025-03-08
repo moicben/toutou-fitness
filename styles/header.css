@@ -271,6 +271,20 @@
     border-radius: 8px;
   }
 
+
+
+
+/*What's App Widget Styles*/
+
+.hihbJA *{
+  font-weight: 300 !important;
+}
+.bNgRAv {
+  font-weight: 500 !important;
+}
+
+
+
 @media (max-width: 1024px) {
 
     .sub{
