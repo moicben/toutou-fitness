@@ -35,8 +35,6 @@ const MyHead = ({ title, description, favicon }) => {
 
       <script src="https://js.mollie.com/v1/mollie.js"></script>
 
-      <script src="https://static.elfsight.com/platform/platform.js" async></script>
-      <div class="elfsight-app-ff817ebe-8d94-42a7-a8d9-ace1c29d4f7a" data-elfsight-app-lazy></div>
       
     </Head>
   );
