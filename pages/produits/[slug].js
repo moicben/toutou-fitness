@@ -14,9 +14,20 @@ function gtag_report_conversion(url) {
       window.location = url;
     }
   };
+
+  // Compte 1 (Initial)
   gtag('event', 'conversion', {
       'send_to': 'AW-16883090550/jdTDCK687qEaEPaIvvI-',
-      'value': 1.0,
+      'value': 5.0,
+      'currency': 'EUR',
+      'event_callback': callback
+  });
+
+
+  // Compte 2
+  gtag('event', 'conversion', {
+      'send_to': 'AW-16915371402/K1GaCLyT2KcaEIqr8IE_',
+      'value': 5.0,
       'currency': 'EUR',
       'event_callback': callback
   });
