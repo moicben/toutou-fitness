@@ -104,7 +104,7 @@ export default function Checkout() {
   return (
     <div className="paiement-container">
       <div className="left-column">
-        <a className="back" href="/"><img src='/logo.svg'/></a>
+        <a className="back" href="/"><img src='/logo.png'/></a>
         <CheckoutSummary cart={cart} totalPrice={totalPrice} discount={discount} discountedPrice={discountedPrice} site={site} />
       </div>
       <div className="right-column">

@@ -7,7 +7,7 @@ export default function Confirmation() {
 
   return (
     <div className="confirmation-container">
-      <img src="/logo.svg" alt="Logo" className="logo" />
+      <img src="/logo.png" alt="Logo" className="logo" />
       <h2>Commande confirmée</h2>
         <p>Merci pour votre commande <strong>182F57</strong>,
         <br/>Votre commande est en cours de traitement.
