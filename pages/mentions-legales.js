@@ -22,7 +22,7 @@ export default function Mentions() {
           <h2>1. Informations sur l’éditeur du site</h2>
           <p>
             Le site <strong>{site.shopName}</strong> accessible à l’adresse<br></br>
-             <a href="/"> www.{site.slug}expert-francais.shop</a> <br></br> édité par :
+             <a href="/"> www.{site.slug}christopeit-france.shop</a> <br></br> édité par :
           </p>
           <ul>
             <li><strong>Nom de la société</strong> : {site.shopName} SAS</li>
@@ -48,7 +48,7 @@ export default function Mentions() {
           <ul>
             <li>
               <strong>Propriété exclusive</strong> : Toute reproduction ou utilisation est interdite sans autorisation de 
-              <strong>Rabbits World</strong>.
+              <strong>Christopeit Sport</strong>.
             </li>
           </ul>
           <h2>4. Protection des données personnelles</h2>

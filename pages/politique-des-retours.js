@@ -76,7 +76,7 @@ const PolitiqueDesRetours = () => {
         <section>
           <h2>6. Contact</h2>
           <p>
-            Pour toute question concernant cette politique de retour, vous pouvez nous contacter à l'adresse suivante : contact@rabbits-world.com.
+            Pour toute question concernant cette politique de retour, vous pouvez nous contacter à l'adresse suivante : support@christopeit-france.shop.
           </p>
         </section>
       </section>

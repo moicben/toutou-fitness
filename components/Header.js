@@ -138,11 +138,13 @@ const Header = ({ shopName, keywordPlurial }) => {
 
   return (
     <>
+    
+      
       <section className="sub">
         Promo fin-hiver : -15% sur tous nos produits avec le code : "<span style={{ fontWeight: 600 }}>mars15</span>" !
       </section>
       <header className="header">
-          <a className="logo-header" href="/"><img src='/logo.svg' alt="Logo"/></a>
+          <a className="logo-header" href="/"><img src='/logo.png' alt="Logo"/></a>
           <nav className="nav">
             <ul>
               <li><a href="/boutique">TOUS LES équipements</a></li>

@@ -2,6 +2,10 @@
 /*PRODUCT GRID*/
 /*PRODUCT GRID*/
 
+.products{
+  width: 100%;
+}
+
 .products .wrapper{
   padding: 2rem 4rem 4rem 4rem;
   width: 100%;
@@ -61,7 +65,7 @@
 
 .product-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0rem;
 }
 
@@ -189,11 +193,11 @@
     margin: 0;
   }
   
-  .product-filters>div:nth-child(1) {
+  .product-filters>div:nth-child(3) {
     display: none;
   }
 
-  .product-filters > div:nth-child(3) {
+  .product-filters > div:nth-child(2) {
     margin-left: 1rem;
   }
 

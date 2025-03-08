@@ -21,7 +21,7 @@ export default function ConditionsGenerales() {
           <h1>Conditions Générales de Vente</h1>
           <h2>1. Présentation de l’entreprise</h2>
           <p>
-            Le site <a href="/"> www.{site.slug}.expert-francais.shop </a> est édité par, 
+            Le site <a href="/"> www.{site.slug}.christopeit-france.shop </a> est édité par, 
             <strong>{site.shopName} SAS </strong>, immatriculée sous le numéro <strong>851 990 135</strong>, 
             située au <strong>125 RUE DE L'ARTISANAT 42110 CIVENS</strong>.
           </p>

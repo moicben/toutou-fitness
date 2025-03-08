@@ -57,6 +57,7 @@ a {
   text-decoration: none;
   color: #000;
   text-transform: uppercase;
+  scroll-behavior: smooth !important;
 }
 
 p{
@@ -89,6 +90,11 @@ td {
   text-decoration: underline;
 }
 
+.squashed {
+  display: inline-block; /* Nécessaire pour que transform fonctionne correctement */
+  transform: scaleY(0.95); /* Réduit la hauteur des lettres de 50% */
+  transform-origin: bottom; /* Optionnel : définit l'origine de la transformation */
+}
 
 
 
@@ -447,7 +453,7 @@ td {
   .about-image img {
     height: 380px;
     width: calc(100% + 4rem);
-    margin: 1rem -2rem -2.5rem -2rem;
+    margin: 1.25rem -2rem -2.5rem -2rem;
   }
 
   .about p {

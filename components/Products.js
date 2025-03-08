@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
 
-const Products = ({ title, products, description, showCategoryFilter = true, initialCategoryFilter = 'all' }) => {
+const Products = ({ title, products, description, showCategoryFilter = true, initialCategoryFilter = 'all', disablePagination = false }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOrder, setSortOrder] = useState('az'); // État pour le type de tri
   const [priceRange, setPriceRange] = useState('all'); // État pour le filtre de prix
   const [categoryFilter, setCategoryFilter] = useState(initialCategoryFilter); // État pour le filtre de catégorie
-  const productsPerPage = 16;
+  const productsPerPage = 12;
   const productListRef = useRef(null);
 
   // Filtrer les produits en fonction de la tranche de prix et de la catégorie
@@ -48,7 +48,7 @@ const Products = ({ title, products, description, showCategoryFilter = true, ini
   // Calculer les produits à afficher sur la page actuelle
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = disablePagination ? sortedProducts : sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
   // Calculer le nombre total de pages
   const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
@@ -91,7 +91,7 @@ const Products = ({ title, products, description, showCategoryFilter = true, ini
                 value={categoryFilter}
                 onChange={(e) => handleCategoryChange(e.target.value)}
               >
-                <option value="all">Tous produits</option>
+                <option value="all">N'importe</option>
                 <option value="velos-appartement">Vélos</option>
                 <option value="tapis-de-course">Tapis</option>
                 <option value="rameurs-interieur">Rameurs</option>
@@ -146,7 +146,7 @@ const Products = ({ title, products, description, showCategoryFilter = true, ini
             </a>
           ))}
         </div>
-        {products.length > productsPerPage && (
+        {!disablePagination && products.length > productsPerPage && (
           <div className="pagination">
             <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
               Précédent
