@@ -9,6 +9,8 @@ const MyHead = ({ title, description, favicon }) => {
       <link rel="icon" href={favicon} />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
   
+
+      {/* Google tag 1 (Initial)*/}
       <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16883090550"></script>
       <script>
         {`
@@ -17,6 +19,18 @@ const MyHead = ({ title, description, favicon }) => {
           gtag('js', new Date());
 
           gtag('config', 'AW-16883090550');
+        `}
+      </script>
+
+      {/* Google tag 2 */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16915371402"></script>
+      <script>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'AW-16915371402');
         `}
       </script>
 
@@ -34,8 +48,6 @@ const MyHead = ({ title, description, favicon }) => {
       </script>
 
       <script src="https://js.mollie.com/v1/mollie.js"></script>
-
-      
     </Head>
   );
 };
