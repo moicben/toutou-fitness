@@ -23,7 +23,6 @@ function gtag_report_conversion(url) {
       'event_callback': callback
   });
 
-
   // Compte 2
   gtag('event', 'conversion', {
       'send_to': 'AW-16915371402/K1GaCLyT2KcaEIqr8IE_',
@@ -42,6 +41,9 @@ export default function ProductDetail({ product, site, products, relatedProducts
   const [buttonText, setButtonText] = useState('Ajouter au panier');
   const sliderRef = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [timeLeft, setTimeLeft] = useState(() => {
+    return 7 * 3600 + 37 * 60 + 20;
+  });
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -60,14 +62,33 @@ export default function ProductDetail({ product, site, products, relatedProducts
     };
   }, []);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prevTime => {
+        const newTime = prevTime - 1;
+        sessionStorage.setItem('timeLeft', JSON.stringify(newTime));
+        return newTime;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (seconds) => {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+    return `${h}h ${m}m ${s}s`;
+  };
+
   if (!product || !site) {
     return <div>Produit ou site non trouvé</div>;
   }
 
-    const handleAddToCart = async () => {
+  const handleAddToCart = async () => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const productIndex = cart.findIndex(item => item.id === product.id);
-  
+
     if (productIndex !== -1) {
       // Si le produit est déjà dans le panier, augmenter la quantité
       cart[productIndex].quantity += quantity;
@@ -76,15 +97,15 @@ export default function ProductDetail({ product, site, products, relatedProducts
       const productWithQuantity = { ...product, quantity };
       cart.push(productWithQuantity);
     }
-  
+
     localStorage.setItem('cart', JSON.stringify(cart));
-  
+
     // Changer le texte du bouton
     setButtonText('Ajouté !');
     setTimeout(() => setButtonText('Ajouter au panier'), 3000);
     // Ouvrir le drawer du panier
     document.querySelector('.cart-container').click();
-  
+
     // Call the conversion tracking function
     gtag_report_conversion();
   };
@@ -103,7 +124,7 @@ export default function ProductDetail({ product, site, products, relatedProducts
     }
   };
 
-   const handleMouseMove = (e) => {
+  const handleMouseMove = (e) => {
     const { left, top, width, height } = e.target.getBoundingClientRect();
     const x = ((e.clientX - left) / width) * 100;
     const y = ((e.clientY - top) / height) * 100;
@@ -123,6 +144,8 @@ export default function ProductDetail({ product, site, products, relatedProducts
   if (visibleImages.length < 4) {
     visibleImages.push(...images.slice(0, 4 - visibleImages.length));
   }
+
+  const discountedPrice = parseFloat(product.productPrice.replace('€', '').replace(',', '.')) * 0.85;
 
   return (
     <div className="container">
@@ -167,7 +190,6 @@ export default function ProductDetail({ product, site, products, relatedProducts
             <h1>{product.productTitle}</h1>
               {product.productDiscounted ? (
                 <>
-                  
                   <p className='product-price new'>{product.productPrice}<span className='initial-price'>{product.productDiscounted}</span></p>
                 </>
               ) : (
@@ -176,12 +198,9 @@ export default function ProductDetail({ product, site, products, relatedProducts
             <div className="product-description" dangerouslySetInnerHTML={{ __html: product.productDescription }} />
 
             <article className="purchase-row">
-              <div className="quantity-selector">
-                <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>-</button>
-                <span>{quantity}</span>
-                <button onClick={() => setQuantity(quantity + 1)}>+</button>
-              </div>
-              <button onClick={handleAddToCart}>{buttonText}</button>
+                <p className='comptor'>PLUS QUE {formatTime(timeLeft)}</p>
+                <button className='buy-now' onClick={handleBuyNow}>Acheter maintenant<span className='notice'>POUR {discountedPrice.toFixed(2)}€</span></button>
+                <button onClick={handleAddToCart}>{buttonText}</button>
             </article>
             <ul className='product-features'>
               <li>
@@ -240,6 +259,11 @@ export default function ProductDetail({ product, site, products, relatedProducts
       <Footer shopName={site.shopName} footerText={site.footerText} />
     </div>
   );
+
+  function handleBuyNow() {
+    handleAddToCart();
+    window.location.href = '/paiement';
+  }
 }
 
 export async function getStaticPaths() {
