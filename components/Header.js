@@ -127,8 +127,8 @@ const Header = ({ shopName, keywordPlurial }) => {
 
   return (
     <>
-      <script src="https://static.elfsight.com/platform/platform.js" async></script>
-      <div className="elfsight-app-ff817ebe-8d94-42a7-a8d9-ace1c29d4f7a" data-elfsight-app-lazy></div>
+      {/* <script src="https://static.elfsight.com/platform/platform.js" async></script>
+      <div className="elfsight-app-ff817ebe-8d94-42a7-a8d9-ace1c29d4f7a" data-elfsight-app-lazy></div> */}
       
       <section className="sub">
         Promo fin-hiver : -15% sur tous nos produits avec le code : "<span style={{ fontWeight: 600 }}>MARS15</span>" !
