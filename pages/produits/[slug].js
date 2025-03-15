@@ -19,7 +19,7 @@ function gtag_report_conversion(url) {
     }
   };
 
-  // Compte 1 (Initial)
+  // Compte (Toutou Fitness)
   gtag('event', 'conversion', {
       'send_to': 'AW-16916919273/hNu3CMaG7aoaEOnnzoI_',
       'value': 10.0,
