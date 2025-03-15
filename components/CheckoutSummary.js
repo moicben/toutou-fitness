@@ -12,7 +12,7 @@ const CheckoutSummary = ({ cart, totalPrice, discount, discountedPrice, site }) 
           {cart.map((item, index) => (
             <li key={index}>
               <div className="cart-item">
-                <h4>{item.productTitle}</h4>
+                <h4>{item.productTitle}{item.selectedOption && <span> - {item.selectedOption}</span>}</h4>
                 <p className='quantity'>(x{item.quantity})</p>
                 <p>{`${parseFloat(item.productPrice.replace('€', '').replace(',', '.')).toFixed(2).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`}</p>
               </div>

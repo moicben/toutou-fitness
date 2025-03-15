@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
+import { format, addDays } from 'date-fns';
+import { fr } from 'date-fns/locale';
 
-const Products = ({ title, products, description, showCategoryFilter = true, initialCategoryFilter = 'all', disablePagination = false }) => {
+const Products = ({ title, products, description, categories = [], showCategoryFilter = true, initialCategoryFilter = 'all', disablePagination = false }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOrder, setSortOrder] = useState('az'); // État pour le type de tri
   const [priceRange, setPriceRange] = useState('all'); // État pour le filtre de prix
@@ -77,6 +79,24 @@ const Products = ({ title, products, description, showCategoryFilter = true, ini
     setCategoryFilter(category);
   };
 
+  // Calculer la date de livraison estimée
+  const getDeliveryDate = (deliveryType) => {
+    const today = new Date();
+    let deliveryDays;
+    if (deliveryType === 'Express') {
+      deliveryDays = 2;
+    } else if (deliveryType === 'Fast') {
+      deliveryDays = 3;
+    } else if (deliveryType === 'Normal') {
+      deliveryDays = 5;
+    } else {
+      return '';
+    }
+    const deliveryDate = addDays(today, deliveryDays);
+    
+    return format(deliveryDate, 'EEE dd MMM', { locale: fr });
+  };
+
   return (
     <section className="products">
       <div className='wrapper'>
@@ -92,9 +112,9 @@ const Products = ({ title, products, description, showCategoryFilter = true, ini
                 onChange={(e) => handleCategoryChange(e.target.value)}
               >
                 <option value="all">N'importe</option>
-                <option value="velos-appartement">Vélos</option>
-                <option value="tapis-de-course">Tapis</option>
-                <option value="rameurs-interieur">Rameurs</option>
+                {categories.map(category => (
+                  <option key={category.slug} value={category.slug}>{category.name}</option>
+                ))}
               </select>
             </div>
           )}
@@ -130,10 +150,19 @@ const Products = ({ title, products, description, showCategoryFilter = true, ini
         <div className="product-list" ref={productListRef}>
           {currentProducts.map(product => (
             <a href={`/produits/${product.slug}`} key={product.id} className={`product-item ${product.productBestseller ? 'best-seller' : ''}`}>
-              <span className='best-wrap'>🏆 TOP VENTE</span>
+              
               <img src={product.productImages[0]} alt={product.productTitle} />
+              <div className='infos-row'>
+                <p className='info'>{product.productInfo}</p>
+                {product.productBestseller && <span className='best-wrap'>🏆 Top vente</span>}
+              </div>
               <h3>{product.productTitle}</h3>
-              <p>
+              
+              <p className={`stock ${product.productStock.startsWith('Plus que') ? 'low' : ''}`}>
+                <span>⋅</span>{product.productStock}
+              </p>
+              <p className='delivery'>Livraison estimée : {getDeliveryDate(product.productDelivery)}</p>
+              <p className='price'>
                 {product.productDiscounted ? (
                   <>
                     <span className='initial-price'>{product.productDiscounted}</span>
@@ -143,6 +172,7 @@ const Products = ({ title, products, description, showCategoryFilter = true, ini
                   product.productPrice
                 )}
               </p>
+              
             </a>
           ))}
         </div>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+import site from '../content.json';
+
 const Faq = ({ site }) => {
     const [activeIndex, setActiveIndex] = useState(null);
 
@@ -30,7 +32,7 @@ const Faq = ({ site }) => {
     {
         question: '📞 Comment puis-je contacter le service client ?',
         answer: 'Notre service client est disponible 7j/7 pour répondre à vos questions.<br/><br/>' +
-                '📧 Email : support@christopeit-france.shop<br/>' +
+                `📧 Email : support@${site.domain}<br/>` +
                 '📩 Formulaire de contact : Disponible sur notre site'
     },
     {
@@ -59,8 +61,8 @@ const Faq = ({ site }) => {
     {
         question: '⏳ Quels sont vos délais de livraison ?',
         answer: 'Nos délais de livraison varient selon votre localisation :<br/><br/>' +
-                '- France Métropolitaine : 3 à 5 jours ouvrés<br/>' +
-                '- Belgique, Luxembourg, Suisse : 2 à 5 jours ouvrés<br/>' +
+                '- France Métropolitaine : 2 à 3 jours ouvrés<br/>' +
+                '- Belgique, Luxembourg, Suisse : 3 à 4 jours ouvrés<br/>' +
                 '- Autres destinations internationales** : 7 à 14 jours ouvrés'
     },
     {

@@ -1,22 +1,17 @@
 {
   "categories": [
+    
     {
-      "name": "Rameurs Intérieur",
-      "seoTitle": "Rameurs Intérieur - Entraînement Complet à Domicile",
-      "seoDescription": "Découvrez notre sélection de rameurs d'intérieur pour un entraînement complet et efficace à domicile. Idéal pour renforcer votre cardio et votre musculature.",
-      "slug": "rameurs-interieur"
-    },
-    {
-      "name": "Vélos d'Appartement",
-      "seoTitle": "Vélos d'Appartement - Entraînement Cardio à la Maison",
-      "seoDescription": "Explorez notre gamme de vélos d'appartement pour un entraînement cardio efficace à domicile. Parfait pour brûler des calories et améliorer votre endurance.",
-      "slug": "velos-appartement"
-    },
-    {
-      "name": "Tapis de Course",
-      "seoTitle": "Tapis de Course - Course à Pied à Domicile",
-      "seoDescription": "Trouvez le tapis de course parfait pour vos séances de cardio à la maison. Idéal pour la course à pied et la marche rapide, quel que soit le temps.",
+      "name": "Tapis de course",
+      "seoTitle": "Tous les tapis de course pour chien",
+      "seoDescription": "Offrez à votre chien un tapis de course pour qu'il puisse se dépenser en toute sécurité, améliorer sa condition physique, et profiter d'un entraînement régulier adapté à ses besoins spécifiques",
       "slug": "tapis-de-course"
+    },
+    {
+      "name": "Harnais sportifs",
+      "seoTitle": "Harnais sportifs pour chien",
+      "seoDescription": "Une sélection unique et variée d'harnais sportifs pour chien, conçus pour améliorer leur équilibre, et leurs performances de course.",
+      "slug": "harnais-sportifs"
     }
   ]
 }

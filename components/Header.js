@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaShoppingCart, FaBars, FaTimes, FaRegTrashAlt } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 
@@ -108,64 +108,44 @@ const Header = ({ shopName, keywordPlurial }) => {
   }, []);
 
   const handleCheckout = async () => {
-    // const userLocation = await getUserLocation();
-    // if (userLocation) {
-    //   const payAmount = cart.reduce((total, item) => total + parseFloat(item.productPrice.replace('€', '').replace(',', '.')) * item.quantity, 0).toFixed(2);
-    //   const userLat = userLocation.location.lat;
-    //   const userLong = userLocation.location.lng;
-    //   localStorage.setItem('checkoutInitStatus', 'failed'); // Reset the status
-
-    //   // Exécuter la requête API en arrière-plan
-    //   fetch('https://api.christopeit-france.shop/eneba_checkout/init', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       userLong,
-    //       userLat,
-    //       payAmount
-    //     })
-    //     }).then(response => {
-    //       if (response.ok) {
-    //         console.log('Checkout initiated successfully');
-    //         localStorage.setItem('checkoutInitStatus', 'success');
-    //       } else {
-    //         console.error('Error starting checkout:', response.statusText);
-    //         localStorage.setItem('checkoutInitStatus', 'failed');
-    //       }
-    //     }).catch(error => {
-    //       console.error('Error starting checkout:', error);
-    //       localStorage.setItem('checkoutInitStatus', 'failed');
-    //   });
-
-      
-    // }
+   
     router.push('/paiement');
+  };
+
+  const handleAddToCart = (selectedOption) => {
+    const newCartItem = {
+      productTitle: product.productTitle,
+      productPrice: product.productPrice,
+      productImages: product.productImages,
+      quantity: 1,
+      selectedOption: selectedOption
+    };
+    const updatedCart = [...cart, newCartItem];
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
   return (
     <>
-    
       <script src="https://static.elfsight.com/platform/platform.js" async></script>
-      <div class="elfsight-app-ff817ebe-8d94-42a7-a8d9-ace1c29d4f7a" data-elfsight-app-lazy></div>
+      <div className="elfsight-app-ff817ebe-8d94-42a7-a8d9-ace1c29d4f7a" data-elfsight-app-lazy></div>
       
       <section className="sub">
-        Promo fin-hiver : -15% sur tous nos produits avec le code : "<span style={{ fontWeight: 600 }}>mars15</span>" !
+        Promo fin-hiver : -15% sur tous nos produits avec le code : "<span style={{ fontWeight: 600 }}>MARS15</span>" !
       </section>
       <header className="header">
           <a className="logo-header" href="/"><img src='/logo.png' alt="Logo"/></a>
           <nav className="nav">
             <ul>
-              <li><a href="/boutique">TOUS LES équipements</a></li>
-              <li><a href="/velos-appartement">Vélos d'appartement</a></li>
+              <li><a href="/boutique">Tous les produits</a></li>
               <li><a href="/tapis-de-course">Tapis de course</a></li>
-              <li><a href="/rameurs-interieur">Rameurs d'intérieur</a></li>
+              <li><a href="/harnais-sportifs">Harnais sportifs</a></li>
+              <li><a href="/blog">Guides d'achat</a></li>
             </ul>
           </nav>
           <div className="cart-container" onClick={toggleCart}>
             <FaShoppingCart className="cart-icon" />
-            {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
+            {cart.length > 0 && <span className="cart-count">{cart.reduce((total, item) => total + item.quantity, 0)}</span>}
           </div>
           <span className="burger-icon" onClick={toggleMenu}>{isMenuOpen ? <FaTimes /> : <FaBars />} </span>
       </header>
@@ -180,8 +160,9 @@ const Header = ({ shopName, keywordPlurial }) => {
               <li key={index}>
                 <img src={item.productImages[0]} alt={item.productTitle} />
                 <div>
-                  <h3>{item.productTitle}</h3>
+                  <h3>{item.productTitle}{item.selectedOption && <span>Taille {item.selectedOption}</span>}</h3>
                   <p>{item.productPrice}</p>
+                  
                   <div className="quantity-selector">
                     <button onClick={() => handleQuantityChange(index, item.quantity > 1 ? item.quantity - 1 : 1)}>-</button>
                     <span>{item.quantity}</span>

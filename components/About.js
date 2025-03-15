@@ -13,7 +13,7 @@ const About = ({ site }) => {
               <p>{site.aboutDescription}</p>
             </div>
             <div className="about-image">
-              <img src="/about-img.jpg" alt="About Us" />
+              <img src="/images/about.jpg" alt="About Us" />
             </div>
           </div>
         </section>

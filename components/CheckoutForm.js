@@ -81,7 +81,7 @@ const CheckoutForm = ({ currentStep, showStep, selectedPaymentMethod, setSelecte
 
   const handleNextStep = (step) => {
     if (step === 1 && !validateStep(step)) {
-      setGlobalError('Transmettez-vos informations de livraison avant de payer.');
+      setGlobalError('Renseignez-vos informations avant de payer.');
       return;
     }
     setGlobalError('');
@@ -164,7 +164,7 @@ const CheckoutForm = ({ currentStep, showStep, selectedPaymentMethod, setSelecte
             <h3>Payer par virement bancaire</h3>
             <p>Utlisez les informations suivantes :</p>
             <div className="iban-group">
-              <p><strong>Titulaire du compte : </strong>Christopeit Sport France</p>
+              <p><strong>Titulaire du compte : </strong>{site.shopName} SAS</p>
               <p><strong>IBAN : </strong>FR76 1695 8000 0128 0938 8426 106</p>
               <p><strong>BIC/SWIFT : </strong>QNTOFRP1XXX</p>
               <p className='row'><span className='id'><strong>Objet :</strong> Commande 182F57</span><span className='amount'><strong>Montant :</strong> {discountedPrice}€</span></p>

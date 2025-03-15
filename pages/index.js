@@ -54,9 +54,9 @@ const Home = ({ site, products }) => {
         <section className="hero">
             <h1>{site.heroTitle}</h1>
             <p>{site.heroDescription}</p>
-            <a href="/boutique"><button>Découvrir les équipements</button></a>
+            <a href="/boutique"><button>Découvrir nos produits</button></a>
             <div className='filter'></div>
-            <img src='/hero-bg.jpg' alt={site.sourceCategory} />
+            <img src='/images/hero.jpg' alt={site.sourceCategory} />
         </section>
         
         <section className="intro">
@@ -66,44 +66,13 @@ const Home = ({ site, products }) => {
           </div>
         </section>
 
-        <Products title={`Les bestellers ${site.keyword}`} products={products} />
+        <Products title={`Les tapis de course ${site.keyword} !`} products={products} />
         
         <About site={site}/>
         
         <Reviews site={site} product={products[0]}/>
         
-        <section className="contact" id='contact'>
-          <div className='wrapper'>
-            <div className="contact-content">
-              <h2>À Votre disposition 7j/7</h2>
-              <p>{site.contactDescription}</p>
-            </div>
-            <div className="contact-form">
-              {formSubmitted ? (
-                <p className='confirmation'>Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.</p>
-              ) : (
-                <form onSubmit={handleSubmit}>
-                  <label htmlFor="name">Nom complet</label>
-                  <input placeholder="Paul Dupont" type="text" id="name" name="name" required />
-                  
-                  <div className='row-form'>
-                    <label htmlFor="email"><span>Email</span>
-                      <input placeholder='exemple@gmail.com' type="email" id="email" name="email" required />
-                    </label>
-                    <label htmlFor="phone"><span>Téléphone</span>
-                      <input placeholder='07 12 34 56 78' type="text" id="phone" name="phone" required />
-                    </label>
-                  </div>
-
-                  <label htmlFor="message">Votre demande</label>
-                  <textarea placeholder="Écrivez votre demande ici..." id="message" name="message" required></textarea>
-                  
-                  <button type="submit">Envoyer</button>
-                </form>
-              )}
-            </div>
-          </div>
-        </section>
+        
       </main>
       <Footer shopName={site.shopName} footerText={site.footerText} />
     </div>

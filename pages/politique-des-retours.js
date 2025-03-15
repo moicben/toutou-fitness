@@ -45,7 +45,7 @@ const PolitiqueDesRetours = () => {
             Pour initier un retour, veuillez suivre les étapes suivantes :
           </p>
           <ul>
-            <li>Contactez notre service client à l'adresse suivante : contact@christopeit-france.shop.</li>
+            <li>Contactez notre service client à l'adresse suivante : support@{site.domain}.</li>
             <li>Indiquez votre numéro de commande et la raison du retour.</li>
             <li>Suivez les instructions fournies par notre service client pour retourner l'article.</li>
           </ul>
@@ -76,7 +76,7 @@ const PolitiqueDesRetours = () => {
         <section>
           <h2>6. Contact</h2>
           <p>
-            Pour toute question concernant cette politique de retour, vous pouvez nous contacter à l'adresse suivante : support@christopeit-france.shop.
+            Pour toute question concernant cette politique de retour, vous pouvez nous contacter à l'adresse suivante : support@{site.domain}.
           </p>
         </section>
       </section>

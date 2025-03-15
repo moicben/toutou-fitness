@@ -54,7 +54,7 @@ const Footer = ({ shopName, footerText }) => {
               <ul>
                 <li><a href="/boutique">Boutique</a></li>
                 <li><a href="/#a-propos">A propos</a></li>
-                <li><a href="/#contact">Contact</a></li>
+                <li><a href="/contact">Contact</a></li>
                 <li><a href="/faq">FAQs</a></li>
               </ul>
             </div>
@@ -63,7 +63,6 @@ const Footer = ({ shopName, footerText }) => {
               <ul>
                 <li><a href="/politique-des-retours">Politique des retours</a></li>
                 <li><a href="/suivre-mon-colis">Suivre mon colis</a></li>
-                <li><a target="_blank" href="https://www.modesdemploi.fr/velos-d-appartement/christopeit">Modes d'emploi</a></li>
                 <li><a target='_blank' href="/sitemap.xml">Plan du site</a></li>
               </ul>
             </div>

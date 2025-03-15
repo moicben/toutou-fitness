@@ -34,9 +34,9 @@
 }
 
 .feature-item p{
-    font-size: 1rem;
+    font-size: .9rem;
     margin-right: 2rem;
-    text-transform: uppercase;
+    text-transform: none;
     font-weight: 400;
     color: black;
 }
@@ -46,7 +46,7 @@
 
 
 footer {
-    background-color: #1b0004;
+    background-color: var(--color-secondary);
     width: 100%;
  }
 
@@ -159,7 +159,7 @@ footer article{
 
 .legal-container *{
   font-size: .75rem;
-    color: #685555;
+    color: #aaa;
 }
 
 .legal-container *:hover{
@@ -183,7 +183,7 @@ footer article{
 
   .sub-footer *{
     font-size: .9rem;
-    color: #685555;
+    color: white;
     margin: 0;
   }
   

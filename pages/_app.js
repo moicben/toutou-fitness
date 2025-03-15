@@ -9,6 +9,7 @@ import '../styles/suivre-mon-colis.css'; // Importer le fichier CSS
 import '../styles/reviews.css'; // Importer le fichier CSS	
 import '../styles/partners.css'; // Importer le fichier CSS
 import '../styles/paiement.css';
+import '../styles/blog.css'; // Importer le fichier CSS
 
 import content from '../content.json';
 import Head from '../components/Head';
@@ -18,8 +19,8 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head 
         title={content.sites[0].keyword}
-        description="Boutique officielle de Christopeit France, distributeur exclusif de la marque Christopeit en France." 
-        favicon="/favicon.png" 
+        description={content.sites[0].heroDescription} 
+        favicon="/icon.png" 
       />
       <Component {...pageProps} />
     </>

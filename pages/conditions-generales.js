@@ -21,14 +21,14 @@ export default function ConditionsGenerales() {
           <h1>Conditions Générales de Vente</h1>
           <h2>1. Présentation de l’entreprise</h2>
           <p>
-            Le site <a href="/"> www.{site.slug}.christopeit-france.shop </a> est édité par, 
+            Le site <a href="/"> www.{site.domain} </a> est édité par, 
             <strong>{site.shopName} SAS </strong>, immatriculée sous le numéro <strong>851 990 135</strong>, 
             située au <strong>125 RUE DE L'ARTISANAT 42110 CIVENS</strong>.
           </p>
           <ul>
             <li><strong>Numéro de SIRET</strong> : 85199013500028</li>
             <li><strong>Responsable légal</strong> : Veronique BERENGÈRE</li>
-            <li><strong>Email</strong> : contact@christopeit-france.shop</li>
+            <li><strong>Email</strong> : support@{site.domain}</li>
           </ul>
           <h2>2. Champ d’application</h2>
           <p>
@@ -82,7 +82,7 @@ export default function ConditionsGenerales() {
             Pour initier un retour, veuillez suivre les étapes suivantes :
           </p>
           <ul>
-            <li>Contactez notre service client à l'adresse suivante : contact@univers-lapin.shop.</li>
+            <li>Contactez notre service client à l'adresse suivante : support@{site.domain}</li>
             <li>Indiquez votre numéro de commande et la raison du retour.</li>
             <li>Suivez les instructions fournies par notre service client pour retourner l'article.</li>
           </ul>
@@ -105,7 +105,7 @@ export default function ConditionsGenerales() {
           </ul>
           <h2>9. Contact</h2>
           <p>
-            Pour toute question concernant ces conditions générales de vente, vous pouvez nous contacter à l'adresse suivante : contact@christopeit-france.shop.
+            Pour toute question concernant ces conditions générales de vente, vous pouvez nous contacter à l'adresse suivante : support@{site.domain}.
           </p>
         </section>
       </main>

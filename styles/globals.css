@@ -1,17 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+
+/* Define CSS variables */
+:root {
+  --color-bg: #ECF7FC;
+  --color-grey-bg: #F2F2F2;
+  --color-grey-text: #666666;
+  --color-black: #222222;
+  --color-primary: #40A8C5;
+  --color-secondary: #235884;
+}
 
 html,
 body {
   background-color: #fff;
   padding: 0;
   margin: 0;
-  font-family: 'Kanit', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   overflow-x: hidden;
 }
 
 * {
   box-sizing: border-box;
+}
+
+img{
+  box-sizing: content-box;
 }
 
 ul, ol {
@@ -23,8 +38,6 @@ ul, ol {
 
 textarea,input{
   resize: none;
-  font-family: 'Kanit', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 
@@ -48,15 +61,15 @@ code {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-weight: 400;
-  text-transform: uppercase;
+  font-weight: 600;
+  text-transform: none;
   color: #222222;
 }
 
 a {
   text-decoration: none;
   color: #000;
-  text-transform: uppercase;
+  text-transform: none;
   scroll-behavior: smooth !important;
 }
 
@@ -66,17 +79,23 @@ p{
 }
 
 button {
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   font-size: 1rem;
-  background-color: #CE122D;
+  background-color: var(--color-primary);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 400;
-  font-family: 'Kanit', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+  font-weight: 600;
+  letter-spacing: .25px;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    text-transform: uppercase;
+}
+
+select{
+  padding: .5rem .75rem;
+  border-radius: 4px;
+  border-color: #ccc;
 }
 
 table {
@@ -90,11 +109,23 @@ td {
   text-decoration: underline;
 }
 
+
+blockquote {
+  background: #eee;
+  margin: 1rem 0 2rem 0;
+  padding: 1rem 2rem;
+}
+
+
 .squashed {
   display: inline-block; /* Nécessaire pour que transform fonctionne correctement */
   transform: scaleY(0.95); /* Réduit la hauteur des lettres de 50% */
   transform-origin: bottom; /* Optionnel : définit l'origine de la transformation */
 }
+
+
+
+
 
 
 
@@ -118,7 +149,7 @@ td {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 260px);
+  height: calc(100vh - 120px);
   position: relative;
   color: white;
   text-align: center;
@@ -146,8 +177,8 @@ td {
 }
 
 .hero h1 {
-  margin-top: -2rem;
-  font-size: 3rem;
+  margin-top: 0rem;
+  font-size: 2.5rem;
   margin-bottom: 0rem;
   z-index: 3;
   max-width: 930px;
@@ -160,19 +191,17 @@ td {
   z-index: 3;
   max-width: 660px;
   color: white;
+  font-weight: 400;
 }
+
 .hero a{
   z-index: 3;
 }
 
 .hero button {
-  padding: 1rem 2rem;
   font-size: 1.1rem;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: white;
+  color: black;
 }
 
 
@@ -181,25 +210,25 @@ td {
   width: 100%;
   text-align: center;
   padding: 3rem 12rem 5rem 12rem;
-  background-color: #f8f1ec;
+  background-color: var(--color-bg);
 }
 
 .intro h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
-  color: #666;
+  color: var(--color-black);
 }
 
 .intro p {
   font-size: 1.25rem;
   max-width: 880px;
   margin: auto;
-
+  font-weight: 400;
 }
 
 
 .about {
-  background: #faefe6;
+  background: var(--color-grey-bg);
   width: 100%;
 }
 
@@ -219,11 +248,12 @@ td {
 .about-content h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #505050;
+  color: var(--color-black);
 }
 
 .about-content p {
   font-size: 1.25rem;
+  color: var(--color-grey-text);
 }
 
 .about-image {
@@ -238,7 +268,6 @@ td {
 }
 
 .testimonials {
-  background-color: #f8f9fa;
   width: 100%;
 }
 
@@ -250,7 +279,7 @@ td {
 }
 
 .testimonials h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   width: 100%;
   text-align: center;
@@ -301,8 +330,8 @@ td {
 }
 
 .contact-content h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
 }
 
 .contact-content p {
@@ -345,20 +374,11 @@ td {
   padding-right: 0;
   font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .contact-form textarea {
   height: 100px;
-}
-
-.contact-form button {
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 .contact-form .confirmation{
@@ -368,6 +388,14 @@ td {
   background-color: #F5F0F2;
   padding:1rem;
   text-align: center;
+}
+
+.contact .contact-info h3{
+  margin: 2rem 0 .5rem 0;
+}
+.contact .contact-info *{
+  font-size: 1rem !important;
+  margin: 0.5rem 0;
 }
 
 
@@ -386,9 +414,6 @@ td {
 .legal h1{
   font-size: 3rem;
 }
-
-
-
 
 
 
@@ -469,7 +494,7 @@ td {
   }
 
   .testimonials h4 {
-    margin-bottom: 0rem;
+    margin: 0rem;
   }
 
   .testimonials-content {
@@ -477,8 +502,8 @@ td {
   }
 
   .testimonial {
-    margin: 0;
-    margin-bottom: .25rem;
+    margin: 0 0 1rem 0;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
   }
 
   .contact .wrapper {

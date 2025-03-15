@@ -22,7 +22,7 @@ export default function Mentions() {
           <h2>1. Informations sur l’éditeur du site</h2>
           <p>
             Le site <strong>{site.shopName}</strong> accessible à l’adresse<br></br>
-             <a href="/"> www.{site.slug}christopeit-france.shop</a> <br></br> édité par :
+             <a href="/"> www.{site.domain}</a> <br></br> édité par :
           </p>
           <ul>
             <li><strong>Nom de la société</strong> : {site.shopName} SAS</li>
@@ -31,14 +31,14 @@ export default function Mentions() {
             <li><strong>Numéro de SIRET</strong> : 851 990 135</li>
             <li><strong>Numéro de TVA intracommunautaire</strong> : FR47851990135</li>
             <li><strong>Responsable de la publication</strong> : Veronique BERENGÈRE</li>
-            <li><strong>Contact email</strong> : contact@christopeit-france.shop</li>
+            <li><strong>Contact email</strong> : support@{site.domain}</li>
           </ul>
           <h2>2. Hébergement</h2>
           <p>Le site est hébergé par :</p>
           <ul>
             <li><strong>Nom de l’hébergeur</strong> : Hostinger</li>
             <li><strong>Adresse</strong> : Hostinger International Ltd, 61 Lordou Vironos Street, 6023 Larnaca, Chypre</li>
-            <li><strong>Site web</strong> : <a href="https://www.hostinger.fr/">https://www.hostinger.fr</a></li>
+            <li><strong>Site web</strong> : <a target="_blank" href="https://www.hostinger.fr/">https://www.hostinger.fr</a></li>
           </ul>
           <h2>3. Propriété intellectuelle</h2>
           <p>
@@ -48,7 +48,7 @@ export default function Mentions() {
           <ul>
             <li>
               <strong>Propriété exclusive</strong> : Toute reproduction ou utilisation est interdite sans autorisation de 
-              <strong>Christopeit Sport</strong>.
+              <strong>{site.shopName}</strong>.
             </li>
           </ul>
           <h2>4. Protection des données personnelles</h2>
@@ -63,7 +63,7 @@ export default function Mentions() {
             <li>Droit à la portabilité des données.</li>
             <li>Droit de limiter ou de vous opposer au traitement des données.</li>
           </ul>
-          <p>Pour exercer ces droits, contactez-nous à : contact@christopeit-france.shop</p>
+          <p>Pour exercer ces droits, contactez-nous à : support@{site.domain}</p>
           <h2>5. Cookies</h2>
           <p>
             Le site utilise des cookies pour améliorer l’expérience utilisateur. 

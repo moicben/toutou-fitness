@@ -8,7 +8,7 @@ const Testimonials = ({ site }) => {
     <>
       <section className="testimonials">
         <div className='wrapper'>
-            <h2>Nos sportifs témoignent !</h2>
+            <h2>{site.testimonialTitle}</h2>
             <div className='testimonials-content'>
                 <blockquote className="testimonial">
                 <h4>{site.testimonial1}</h4>

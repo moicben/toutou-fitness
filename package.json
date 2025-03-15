@@ -1,5 +1,5 @@
 {
-  "name": "sport-maison",
+  "name": "toutou-fitness",
   "version": "1.o",
   "private": true,
   "scripts": {
@@ -14,6 +14,7 @@
     "@stripe/stripe-js": "^5.4.0",
     "@vitalets/google-translate-api": "^9.2.1",
     "axios": "^1.8.1",
+    "date-fns": "^4.1.0",
     "emailjs-com": "^3.2.0",
     "https": "^1.0.0",
     "jimp": "^1.6.0",

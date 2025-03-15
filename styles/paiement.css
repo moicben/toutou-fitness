@@ -14,7 +14,7 @@
 }
 
 .left-column {
-  background-color: #FAEFE6;
+  background-color: var(--color-bg);
   padding-left: 8rem;
 }
 
@@ -45,13 +45,13 @@
 .shop-info h1 {
   font-size: 2rem;
   margin: 0;
-  font-weight: 500;
-  color:#CE122D;
+  font-weight: 600;
+  color: var(--color-primary);
 }
 
 .shop-info h2 {
   font-size: 1rem;
-  color: rgb(79, 79, 79);
+  color:var(--color-black);
   font-weight: 500;
   margin: 0px;
 }
@@ -116,6 +116,16 @@ margin-bottom: 1rem;
   margin-top: 0rem;
   font-weight: 400;
   color: #222;
+}
+
+.cart-item h4{
+    position: relative;
+}
+
+.cart-item span{
+  color: #666;
+  font-size: .75rem;
+
 }
 
 .cart-item p.quantity {
@@ -264,10 +274,11 @@ margin-bottom: 1rem;
   width: 100%;
   font-size: .9rem;
   transition: .5s;
+  background-color: var(--color-secondary);
 }
 
 .checkout-form button:hover {
-  background-color: #a50000;
+  background-color: var(--color-primary);
 }
 
 .checkout-form .fas{

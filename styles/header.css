@@ -1,13 +1,13 @@
 .sub {
-    padding: 1rem;
+    padding: .75rem;
     width: 100%;
     text-align: center;
-    background-color: #CE122D;
+    background-color: var(--color-secondary);
     font-size: 0.9rem;
-    font-weight: 300;
+    font-weight: 400;
     color: white;
     z-index: 11;
-    text-transform: uppercase;
+    text-transform: none;
   }
   
   .header {
@@ -30,7 +30,7 @@
 
   .logo-header img{
     margin-right: 1.5rem;
-    width: 15rem;
+    width: 12rem;
   }
 
   .logo-header h2{
@@ -201,6 +201,12 @@
     max-height: 70px;
     overflow: hidden;
   }
+
+  .cart-drawer h3 span{
+    font-size: .75rem;
+    color: var(--color-grey-text);
+    padding-left: .5rem;
+  }
   
   .cart-container {
     position: relative;
@@ -229,8 +235,9 @@
     background: rgb(221, 221, 221);
     color: black;
     border-radius: 50%;
-    padding: 0px 6px;
-    font-size: 0.75rem;
+    padding: 2.5px 0px;
+    text-align: center;
+    font-size: 0.6rem;
     font-weight: 400;
     width: 18px;
     height: 18px;
@@ -293,19 +300,19 @@
     }
     
     .header{
-        padding: 1rem 1.5rem;
+        padding: 1.25rem 1.5rem;
     }
 
     .header .nav ul{
         width: 100%;
         position: absolute;
         right: -100%;
-        top: 70px;
+        top: 78px;
         background-color: white;
         z-index: 10;
         flex-direction: column;
         transition: 0.5s ease-in-out;
-        height: calc(100vh - 146px);
+        height: calc(100vh - 138px);
         display: flex;
         align-items: center;
         justify-content: center;
