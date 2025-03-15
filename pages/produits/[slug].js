@@ -21,19 +21,12 @@ function gtag_report_conversion(url) {
 
   // Compte 1 (Initial)
   gtag('event', 'conversion', {
-      'send_to': 'AW-16883090550/jdTDCK687qEaEPaIvvI-',
-      'value': 5.0,
+      'send_to': 'AW-16916919273/hNu3CMaG7aoaEOnnzoI_',
+      'value': 10.0,
       'currency': 'EUR',
       'event_callback': callback
   });
 
-  // Compte 2
-  gtag('event', 'conversion', {
-      'send_to': 'AW-16915371402/K1GaCLyT2KcaEIqr8IE_',
-      'value': 5.0,
-      'currency': 'EUR',
-      'event_callback': callback
-  });
   return false;
 }
 
