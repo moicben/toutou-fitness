@@ -73,7 +73,7 @@ export default function ConditionsGenerales() {
             Les articles peuvent être retournés s'ils respectent les conditions suivantes :
           </p>
           <ul>
-            <li>Les articles doivent être retournés dans les 30 jours suivant la réception.</li>
+            <li>Les articles doivent être retournés dans les 60 jours suivant la réception.</li>
             <li>Les articles doivent être dans leur état d'origine, non utilisés et non endommagés.</li>
             <li>Les articles doivent être retournés avec tous les accessoires et emballages d'origine.</li>
           </ul>
