@@ -14,7 +14,6 @@ const PolitiqueDeConfidentialite = () => {
     <div key={site.id} className="container">
       <Head>
         <title>{`Politique de Confidentialité - ${site.shopName}`}</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       
       <main>

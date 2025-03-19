@@ -15,7 +15,6 @@ const PolitiqueDesRetours = () => {
     <div key={site.id} className="container">
       <Head>
         <title>{`Politique des Retours - ${site.shopName}`}</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       
       <main >
