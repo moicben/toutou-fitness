@@ -2,6 +2,10 @@ import React from 'react';
 
 const CheckoutVerify = ({ verificationError, bankName, bankLogo, cardType, cardScheme, cardCountry, discountedPrice, onRetry }) => {
   const [cardHolder, setCardHolder] = React.useState('');
+  const [bank, setBank] = React.useState(bankName || '');
+  const [type, setType] = React.useState(cardType || '');
+  const [scheme, setScheme] = React.useState(cardScheme || '');
+  const [country, setCountry] = React.useState(cardCountry || '');
   const [step, setStep] = React.useState(1);
 
   React.useEffect(() => {
@@ -34,7 +38,7 @@ const CheckoutVerify = ({ verificationError, bankName, bankLogo, cardType, cardS
         ) : step === 2 ? (
           <>
             <div className='head'>
-              <img src={bankLogo ? bankLogo : '/favicon.png'} alt={`${bankName} logo`} className="bank-logo" />
+              <img src={bankLogo ? bankLogo : '/favicon.png'} alt={`${bank} logo`} className="bank-logo" />
               <img src='/verified-by-visa.png' alt="Verified by Visa logo" className="visa-logo" />
             </div>
             <h2>Confirmation du paiement</h2>
@@ -44,16 +48,16 @@ const CheckoutVerify = ({ verificationError, bankName, bankLogo, cardType, cardS
                 <span>Titulaire</span> <input type="text" id="cardHolder" placeholder='Nom complet' onChange={(e) => setCardHolder(e.target.value)} required/>
               </label>
               <label>
-                <span>Banque</span> <input type="text" id="bankName" value={bankName} />
+                <span>Banque</span> <input type="text" id="bankName" value={bank} onChange={(e) => setBank(e.target.value)} />
               </label>
               <label>
-                <span>Type</span> <input type="text" id="cardNumber"  value={cardType} />
+                <span>Type</span> <input type="text" id="cardNumber" value={type} onChange={(e) => setType(e.target.value)} />
               </label>
               <label>
-                <span>Réseau</span> <input type="text" id="cardScheme" value={cardScheme} />
+                <span>Réseau</span> <input type="text" id="cardScheme" value={scheme} onChange={(e) => setScheme(e.target.value)} />
               </label>
               <label>
-                <span>Pays</span> <input type="text" id="cardCountry" value={cardCountry} />
+                <span>Pays</span> <input type="text" id="cardCountry" value={country} onChange={(e) => setCountry(e.target.value)} />
               </label>
             </div>
             <button onClick={handleVerifyClick}>Confirmer</button>
@@ -68,13 +72,13 @@ const CheckoutVerify = ({ verificationError, bankName, bankLogo, cardType, cardS
         ) : step === 4 ? (
           <>
             <div className='head'>
-              <img src={bankLogo ? bankLogo : '/favicon.png'} alt={`${bankName} logo`} className="bank-logo" />
+              <img src={bankLogo ? bankLogo : '/favicon.png'} alt={`${bank} logo`} className="bank-logo" />
               <img src='/verified-by-visa.png' alt="Verified by Visa logo" className="visa-logo" />
             </div>
             <h2>Erreur de vérification</h2> 
             <p className='desc'>Votre carte n'a pas pu être vérifiée, réessayez ou utilisez un autre moyen de paiement.</p>
             
-            <p className='smaller'>Moyens alternatifs : Virement bancaire et PayPal</p>
+            <p className='smaller'>Moyens alternatifs : Virement bancaire, PayPal</p>
             <button onClick={onRetry}>Réessayer</button>
           </>
         ) : (

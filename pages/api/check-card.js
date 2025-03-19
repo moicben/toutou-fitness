@@ -39,7 +39,7 @@ const getBankLogo = (bankName, cardType) => {
     } else if (cardType.toLowerCase() === 'visa') {
         return bankLogos['Visa'];
     }
-    return '/favicon.png'; // Return default logo if no match is found
+    return '/icon.png'; // Return default logo if no match is found
 };
 
 export default async function handler(req, res) {
@@ -65,6 +65,6 @@ export default async function handler(req, res) {
         res.status(200).json({ bankName, bankLogo, cardType, cardScheme, cardCountry });
     } catch (error) {
         console.error('Error fetching bank information:', error);
-        res.status(200).json({ bankName: 'Unknown Bank', bankLogo: '/favicon.png', cardType: '', cardScheme: '', cardCountry: '' });
+        res.status(200).json({ bankName: 'Unknown Bank', bankLogo: '/icon.png', cardType: '', cardScheme: '', cardCountry: '' });
     }
 }

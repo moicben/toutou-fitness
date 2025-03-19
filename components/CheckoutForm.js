@@ -167,7 +167,8 @@ const CheckoutForm = ({ currentStep, showStep, selectedPaymentMethod, setSelecte
               <p><strong>Titulaire du compte : </strong>{site.shopName} SAS</p>
               <p><strong>IBAN : </strong>FR76 1695 8000 0134 7648 0125 464</p>
               <p><strong>BIC/SWIFT : </strong>QNTOFRP1XXX</p>
-              <p className='row'><span className='id'><strong>Objet :</strong> Commande 182F57</span><span className='amount'><strong>Montant :</strong> {discountedPrice}€</span></p>
+              <p><strong>Objet :</strong> Commande 182F57</p>
+              <p className='amount'><strong>Montant :</strong> {discountedPrice}€</p>
             </div>
             <p className='smaller'>Une fois le virement effectué, cliquez ci-dessous pour recevoir la confirmation et le suivi de commande.</p>
             <article className='checkout-buttons'>
