@@ -165,8 +165,8 @@ const CheckoutForm = ({ currentStep, showStep, selectedPaymentMethod, setSelecte
             <p>Utlisez les informations suivantes :</p>
             <div className="iban-group">
               <p><strong>Titulaire du compte : </strong>{site.shopName} SAS</p>
-              <p><strong>IBAN : </strong>FR76 1695 8000 0134 7648 0125 464</p>
-              <p><strong>BIC/SWIFT : </strong>QNTOFRP1XXX</p>
+              <p><strong>IBAN : </strong>GE43 BG00 000 0060 6240 045</p>
+              <p><strong>BIC/SWIFT : </strong>BAGAGE22</p>
               <p><strong>Objet :</strong> Commande 182F57</p>
               <p className='amount'><strong>Montant :</strong> {discountedPrice}€</p>
             </div>
